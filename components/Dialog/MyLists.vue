@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <h1 class="dialogH1">
+    <div class="r">
+        <p class="dialogH1">
             My lists
-        </h1>
+        </p>
     </div>
 </template>

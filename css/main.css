@@ -30,7 +30,9 @@ body {
     font-family: system-ui;
 }
 
-.color_onHover:hover {
-    color: var(--color);
-    fill: var(--color);
+
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--gray-light);
 }

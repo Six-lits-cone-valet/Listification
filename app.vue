@@ -9,7 +9,7 @@ const appState = useAppState();
     <Header />
 
     <main class="">
-        <DialogBox v-if="appState.activeDialog"  />
+        <DialogBox v-if="appState.activeDialog" />
     </main>
   </div>
 </template>

@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: rgb(1, 54, 87);
+    --darker: rgb(0, 33, 53);
+    --color: rgb(231, 179, 83);
+    --gray-light: rgb(212, 212, 212);
+    --gray-mid: rgb(42, 69, 87);
+    --gray-dark: rgb(25, 40, 51);
+    --gray-darker: rgb(49, 49, 49);
+}
+
+html {
+    background-color: var(--darker);
+}
+
+body {
+    width: min(500px, 100vw);
+    height: 100vh;
+    margin: auto;
+}
+
+* {
+    color: var(--gray-light);
+    font-family: system-ui;
+}
+
+.color_onHover:hover {
+    color: var(--color);
+    fill: var(--color);
+}

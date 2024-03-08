@@ -1,23 +1,23 @@
 <script setup>
-const myLocalLists = localStorage.getItem('myLists') ? JSON.parse(localStorage.getItem('myLists') ): [];
+import { createNewList } from '@/idb/lists';
+const isPending = ref(false);
 
-const listName = ref('');
-
-
-const newList = ref({
-    title: '',
-    theme: '',
-    items: []
-});
+const newListTitle = ref('');
+const newListTheme = ref('');
 
 function setTheme(themeId) {
-    newList.theme = themeId;
+    newListTheme.value = themeId;
 }
 
-function submitForm() {
-    myLocalLists.push(newList.value);
-    localStorage.setItem('myLocalLists', JSON.stringify(myLocalLists));
+async function submitForm() {
+    if(isPending.value) return;
+    
+    isPending.value = true;
+    const response = await createNewList(newListTitle.value, newListTheme.value);
+    console.log(response);
+    isPending.value = false;
 }
+
 </script>
 
 <template>
@@ -27,7 +27,7 @@ function submitForm() {
 
             <div class="flex column gap10">
                 <lable for="newList">New List</lable>
-                <input id="newList" type="text" placeholder="List Name" v-model="newList.title" />
+                <input id="newList" type="text" placeholder="List Name" v-model="newListTitle" />
             </div>
             <button type="submit">Create</button>
         </form>
@@ -44,4 +44,4 @@ input[type="text"] {
     background-color: transparent;
     border-radius: 5px;
 }
-</style>
+</style>~/idb/lists

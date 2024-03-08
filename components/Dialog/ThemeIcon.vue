@@ -1,8 +1,9 @@
 <script setup>
+import icons from '@/assets/icons.json';
 const props = defineProps({
-    iconPath: String,
+    iconId: String,
     active: Boolean,
-    themeIcon: {
+    border: {
         type: Boolean,
         default: false
     }
@@ -14,7 +15,7 @@ const props = defineProps({
     <svg viewBox="0 -960 960 960" class="themeIcon pointer"
     :class="{ 'active' : active }">
 
-        <path :d="iconPath" />
+        <path :d="icons[iconId].path" />
     </svg>
 </template>
 

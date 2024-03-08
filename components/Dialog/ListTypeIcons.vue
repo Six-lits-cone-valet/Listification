@@ -1,5 +1,5 @@
 <script setup>
-import content from '@/assets/content.json';
+import icons from '@/assets/icons.json';
 
 const emit = defineEmits(['selectTheme']);
 
@@ -17,11 +17,10 @@ function handleClick(themeId) {
 
         <div class="scroller flex justifyBetween gap10 marTop20">
             <DialogThemeIcon 
-                v-for="icon in content.icons" :key="icon.name"
-                :iconPath="icon.path" 
-                :active="activeTheme === icon.id"
-                @click="handleClick(icon.id)"
-                themeIcon/>
+                v-for="icon in Object.keys(icons)" :key="icon"
+                :iconId="icon"
+                :active="activeTheme === icon"
+                @click="handleClick(icon)" />
 
         </div>
     </fieldset>

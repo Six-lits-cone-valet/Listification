@@ -36,3 +36,10 @@ body {
     height: 24px;
     fill: var(--gray-light);
 }
+
+.colorOnHover:hover {
+    color: var(--color);
+    fill: var(--color);
+    border: 1px solid var(--color);
+    outline: 2px solid var(--color);
+}

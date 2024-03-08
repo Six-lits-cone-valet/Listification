@@ -13,7 +13,10 @@ const props = defineProps({
 
 <template>
     <svg viewBox="0 -960 960 960" class="themeIcon pointer"
-    :class="{ 'active' : active }">
+    :class="[
+        { 'active' : active },
+        { 'border' : border }
+    ]">
 
         <path :d="icons[iconId].path" />
     </svg>
@@ -25,14 +28,19 @@ const props = defineProps({
     height: 48px;
     padding: 6px;
     fill: var(--gray-light);
-    border: 1px solid var(--gray-light);
+    
     border-radius: 5px;
 }
-.themeIcon:hover,
+
 .themeIcon.active {
     fill: var(--color);
     border: 1px solid var(--color);
     outline: 2px solid var(--color);
 }
-
+.border {
+    border: 1px solid var(--gray-light);
+}
+.border:hover {
+    border: 1px solid var(--gray-light);
+}
 </style>

@@ -20,7 +20,8 @@ function handleClick(themeId) {
                 v-for="icon in Object.keys(icons)" :key="icon"
                 :iconId="icon"
                 :active="activeTheme === icon"
-                @click="handleClick(icon)" />
+                @click="handleClick(icon)" 
+                border/>
 
         </div>
     </fieldset>

@@ -26,7 +26,8 @@ async function submitForm() {
             <DialogListTypeIcons @selectTheme="setTheme"/>
 
             <div class="flex column gap10">
-                <lable for="newList">New List</lable>
+                <label for="newList">New List</label>
+                
                 <input id="newList" type="text" placeholder="List Name" v-model="newListTitle" />
             </div>
             <button type="submit">Create</button>

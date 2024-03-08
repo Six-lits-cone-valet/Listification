@@ -1,6 +1,17 @@
 <script setup>
 import { getLists } from '@/idb/lists';
+import { setActiveList } from '@/idb/state';
+const appState = useAppState();
+
 const lists = ref(null);
+
+function setListAsActive(e) {
+    console.log(e.currentTarget.dataset)
+    // let listId = e.target.dataset.listId;
+    // setActiveList(listId);
+    // appState.value.activeList = listId;
+    // console.log(appState.value.activeList);
+}
 
 onMounted(async () => {
     lists.value = await getLists();
@@ -11,7 +22,12 @@ onMounted(async () => {
 
 <template>
     <div class="grow flex column gap10 pad20">
-        <div class="list flex alignCenter gap20" v-for="list in lists" :key="list.id">
+        <div 
+            v-for="list in lists" :key="list.id"
+            class="list flex alignCenter gap20 pointer"
+            @click="setListAsActive"
+            :data-listid="list.id">
+
             <DialogThemeIcon :iconId="list.theme" />
 
             <h2>{{ list.name }}</h2>  

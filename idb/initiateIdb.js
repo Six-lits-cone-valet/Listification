@@ -2,14 +2,13 @@ import { openDB } from 'idb';
 
 export { initiateIdb };
 
-
 async function initiateIdb() {
     let dbCreated = false;
     const db = await openDB('listify', 1, {
         upgrade(db) {
             if (!db.objectStoreNames.contains('lists')) {
                 db.createObjectStore('lists', { autoIncrement: true });
-                db.createObjectStore('settings');
+                db.createObjectStore('state');
                 dbCreated = true;
             }
         },

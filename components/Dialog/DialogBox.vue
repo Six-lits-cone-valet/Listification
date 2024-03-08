@@ -13,7 +13,7 @@ const dialogs = {
 
 </script>
 <template>
-    <section class="dialogBox full centered ">
+    <section class="dialogBox full absolute top0 left0 centered ">
         <div class="dialog flex column relative">
             <h1 class="flex justifyEnd">
                 <span class="grow">

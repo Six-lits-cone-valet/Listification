@@ -1,7 +1,9 @@
 <script setup>
 import { createNewList } from '@/idb/lists';
+const appState = useAppState();
 const isPending = ref(false);
 
+const form = ref(null);
 const newListTitle = ref('');
 const newListTheme = ref('');
 
@@ -13,24 +15,26 @@ async function submitForm() {
     if(isPending.value) return;
     
     isPending.value = true;
-    const response = await createNewList(newListTitle.value, newListTheme.value);
-    console.log(response);
+    const newListId = await createNewList(newListTitle.value, newListTheme.value);
+    appState.value.activeList = 5;
+    form.value.reset();
     isPending.value = false;
+    appState.value.activeDialog = 'myLists';
 }
 
 </script>
 
 <template>
     <div class="grow pad20">
-        <form class="flex column gap20" @submit.prevent="submitForm">
+        <form ref="form" class="flex column gap20" @submit.prevent="submitForm">
             <DialogListTypeIcons @selectTheme="setTheme"/>
 
             <div class="flex column gap10">
                 <label for="newList">New List</label>
                 
-                <input id="newList" type="text" placeholder="List Name" v-model="newListTitle" />
+                <input id="newList" type="text" placeholder="List Name" v-model="newListTitle" autocomplete="off"/>
             </div>
-            <button type="submit">Create</button>
+            <button class="pointer" type="submit">Create</button>
         </form>
     </div>
 </template>

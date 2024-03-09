@@ -1,3 +1,23 @@
+<script setup>
+import { initiateIdb } from '@/idb/initiateIdb';
+const appState = useAppState();
+
+async function handleClick() {
+    const response = await initiateIdb();
+
+    if(response.dbCreated === true) {
+        localStorage.setItem('dbExists', 'true');
+
+        appState.value.dbExists = true;
+    }
+}
+
+onMounted(async () => {
+    appState.value.dbExists = localStorage.getItem('dbExists');
+});
+
+</script>
+
 <template>
     <div class="welcomePanel full flex column gap20 justifyCenter">
 

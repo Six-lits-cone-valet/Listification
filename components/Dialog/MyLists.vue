@@ -6,16 +6,13 @@ const appState = useAppState();
 const lists = ref(null);
 
 function setListAsActive(e) {
-    console.log(e.currentTarget.dataset)
-    // let listId = e.target.dataset.listId;
-    // setActiveList(listId);
-    // appState.value.activeList = listId;
-    // console.log(appState.value.activeList);
+    const listId = e.currentTarget.dataset.listid
+    appState.value.activeList = listId;
+    setActiveList(listId);
 }
 
 onMounted(async () => {
     lists.value = await getLists();
-    console.log(lists.value);
 });
 
 </script>

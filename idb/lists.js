@@ -5,7 +5,8 @@ async function createNewList(name, theme) {
     const db = await openDB('listify', 1);
     const tx = db.transaction('lists', 'readwrite');
     const store = tx.objectStore('lists');
-    await store.add({
+    const request = await store.add({
+        id: Date.now(),
         name: name, 
         theme: theme,
         items: [],
@@ -13,6 +14,8 @@ async function createNewList(name, theme) {
         date_updated: Date.now()
     });
     await tx.done;
+    
+    return request;
 }
 
 async function getLists(limit = 10) {
@@ -26,5 +29,7 @@ async function getListById(id) {
     const db = await openDB('listify', 1);
     const tx = db.transaction('lists', 'readonly');
     const store = tx.objectStore('lists');
-    return store.get(id);
+    const list = await store.get(+id);
+    console.log(list)
+    return list;
 }

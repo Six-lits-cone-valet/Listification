@@ -7,7 +7,7 @@ async function initiateIdb() {
     const db = await openDB('listify', 1, {
         upgrade(db) {
             if (!db.objectStoreNames.contains('lists')) {
-                db.createObjectStore('lists', { autoIncrement: true });
+                db.createObjectStore('lists', { keyPath: 'id' });
                 db.createObjectStore('state');
                 dbCreated = true;
             }

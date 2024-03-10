@@ -9,6 +9,8 @@ async function initiateIdb() {
             if (!db.objectStoreNames.contains('lists')) {
                 db.createObjectStore('lists', { keyPath: 'id' });
                 db.createObjectStore('state');
+                const itemsStore = db.createObjectStore('items', { keyPath: 'id' });
+                itemsStore.createIndex('by_listId', 'list_id');
                 dbCreated = true;
             }
         },

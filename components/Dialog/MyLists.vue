@@ -6,9 +6,11 @@ const appState = useAppState();
 const lists = ref(null);
 
 function setListAsActive(e) {
+
     const listId = e.currentTarget.dataset.listid
     appState.value.activeList = listId;
     setActiveList(listId);
+    appState.value.activeDialog = '';
 }
 
 onMounted(async () => {

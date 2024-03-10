@@ -4,12 +4,14 @@ export const useAppState = () => {
         activeList: string,
         myLists: Array<string>,
         dbExists: boolean,
+        isPending: boolean
     }>('appState', 
         () => ({ 
             activeDialog: '',
             activeList: '',
             myLists: [],
             dbExists: false,
+            isPending: false
         })
     );
 }

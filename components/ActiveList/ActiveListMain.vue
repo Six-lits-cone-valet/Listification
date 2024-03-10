@@ -1,16 +1,50 @@
 <script setup>
 import { getActiveList } from '@/idb/state';
 import { getListById } from '@/idb/lists';
+import { createNewItem, deleteItem } from '@/idb/items';
 
 // import icons from '@/assets/icons.json';
 const appState = useAppState();
 const activeList = ref(null);
 
+const requestingNewItem = ref(false);
+const newItemText = ref('');
+
+
+async function saveNewItem() {
+    if ( appState.value.isPending ||
+         newItemText.value === '' )  {
+            console.log(appState.value.isPending)
+        console.log(newItemText.value)
+        return
+    }
+    appState.value.isPending = true;
+    await createNewItem(appState.value.activeList, newItemText.value);
+    activeList.value = await getListById(appState.value.activeList);
+    console.log('activeList.value:', activeList.value);
+    requestingNewItem.value = false;
+    newItemText.value = "";
+    appState.value.isPending = false;
+}
+async function requestDeleteItem(itemId) {
+    if ( appState.value.isPending ) return;
+    appState.value.isPending = true;
+    await deleteItem(itemId);
+    activeList.value = await getListById(appState.value.activeList);
+    appState.value.isPending = false;
+}
+
 watch(
   () => appState.value.activeList,
   async (newId) => {
-    activeList.value = await getListById(newId);
-    console.log(activeList.value)
+
+    try {
+        console.log('trying')
+        activeList.value = await getListById(newId);
+        console.log('trying again')
+    } catch (error) {
+        console.error('Error getting list:', error);
+    }
   }
 )
 
@@ -23,24 +57,101 @@ watch(
 
 </script>
 <template>
-    <div class="full r">
-        <div class="item createNew flex justifyBetween gap10 pad20" v-if="appState.activeList">
-            <h2 v-if="activeList">
+    <section class="full" v-if="activeList">
+        <header class="flex justifyBetween alignCenter gap10 pad20" v-if="appState.activeList">
+            <h2 class="">
                 {{ activeList.name }}
             </h2>
 
-            <div class="flex gap10">
-                <p> New item </p>
+            <button class="flex alignCenter gap10 pointer colorOnHover" @click.prevent="requestingNewItem = true">
+                <span class="centered h100"> New item </span>
 
-                <svg class="icon" viewBox="0 -960 960 960">
+                <svg class="icon " viewBox="0 -960 960 960">
                     <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
                 </svg>
+            </button>
+        </header>
+
+        <main>
+            <div class="items" v-if="activeList.items.length">
+                <div class="item flex justifyBetween alignCenter" v-for="item in activeList.items" :key="item.id">
+                    <span class="text">- {{ item.text }}</span>
+
+                    <span>
+                        <svg @click="requestDeleteItem(item.id)"
+                            viewBox="0 -960 960 960" 
+                            class="pointer icon">
+                            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        </svg>
+                    </span>
+                </div>
             </div>
-        </div>
-    </div>
+
+            <div class="newItemBox" v-if="requestingNewItem">
+                <form class="relative flex justifyEnd alignCenter">
+                    <input 
+                        class="itemText grow"
+                        type="text" 
+                        v-model="newItemText"
+                        placeholder="Make pizza"
+                        v-focus>
+
+                    <div class="closeButtonframe flex alignCenter gap10 h100">
+                        <svg 
+                            viewBox="0 -960 960 960" 
+                            class="pointer icon"
+                            @click="saveNewItem">
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                        </svg>
+
+                        <svg @click="newItem = null"
+                            viewBox="0 -960 960 960" 
+                            class="pointer icon">
+                            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        </svg>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </section>
 </template>
 
 <style scoped>
+button {
+    background-color: #ffffff33;
+    padding: 3px 8px 3px 15px;
+    border: 1px solid var(--gray-light);
+    border-radius: 100px;
+}
+button span {
+    font-weight: 700;
+}
 
-
+.newItemBox {
+    background-color: var(--dark);
+    border-bottom: 1px solid var(--gray-light);
+}
+input[type="text"] {
+    /* width: 100%; */
+    padding: 10px;
+    color: var(--light);
+}
+.closeButtonframe {
+    margin: 0 10px;
+}
+.icon {
+    width: 30px;
+    height: 30px;
+}
+.item {
+    padding: 15px 20px;
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    margin-block: 8px;
+}
+.item .text {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--graylight);
+}
 </style>

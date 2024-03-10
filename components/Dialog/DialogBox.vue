@@ -13,7 +13,7 @@ const dialogs = {
 
 </script>
 <template>
-    <section class="dialogBox full absolute top0 left0 centered ">
+    <section class="dialogBox full absolute top0 left0 centered">
         <div class="dialog flex column relative">
             <h1 class="flex justifyEnd">
                 <span class="grow">
@@ -42,13 +42,17 @@ const dialogs = {
 </style>
 
 <style scoped>
-
+.dialogBox {
+    background-color: rgba(0, 29, 38, 0.709);
+}
 .dialog {
     width: min(400px, 90%);
     min-height: 300px;
+    background-color: var(--dark);
     border: 1px solid var(--gray-mid);
     border-radius: 10px;
     box-shadow: 1px 1px 5px rgb(0, 32, 25);
+    box-shadow: 0px 0px 5px rgba(101, 211, 255, 0.115);
     overflow: hidden;
 }
 h1 {

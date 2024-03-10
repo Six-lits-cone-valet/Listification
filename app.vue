@@ -1,4 +1,6 @@
 <script setup>
+
+
 import browserSupport from '@/idb/browserSupport';
 const browserIsCompatible = ref(null);
 
@@ -7,6 +9,7 @@ const appState = useAppState();
 onMounted(async () => {
     browserIsCompatible.value = browserSupport();
 });
+
 </script>
 
 <template>

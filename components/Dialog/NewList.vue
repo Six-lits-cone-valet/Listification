@@ -12,7 +12,10 @@ function setTheme(themeId) {
 }
 
 async function submitForm() {
-    if(isPending.value) return;
+    if( isPending.value ||
+        !newListTitle.value ||
+        !newListTheme.value 
+    ) return;
     
     isPending.value = true;
     const newListId = await createNewList(newListTitle.value, newListTheme.value);

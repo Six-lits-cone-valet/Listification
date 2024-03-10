@@ -12,7 +12,7 @@
     --gray-light: rgb(212, 212, 212);
     --gray-mid: rgb(42, 69, 87);
     --gray-dark: rgb(25, 40, 51);
-    --gray-darker: rgb(49, 49, 49);
+    --gray-darker: rgb(120, 120, 120);
 }
 
 html {
@@ -42,4 +42,10 @@ body {
     fill: var(--color);
     border: 1px solid var(--color);
     outline: 2px solid var(--color);
+}
+
+
+.itemText {
+    font-size: 20px;
+    font-weight: 600;
 }

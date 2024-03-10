@@ -67,47 +67,29 @@ watch(
                 <span class="centered h100"> New item </span>
 
                 <svg class="icon " viewBox="0 -960 960 960">
-                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
                 </svg>
             </button>
         </header>
 
         <main>
             <div class="items" v-if="activeList.items.length">
-                <div class="item flex justifyBetween alignCenter" v-for="item in activeList.items" :key="item.id">
-                    <span class="text">- {{ item.text }}</span>
-
-                    <span>
-                        <svg @click="requestDeleteItem(item.id)"
-                            viewBox="0 -960 960 960" 
-                            class="pointer icon">
-                            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                        </svg>
-                    </span>
-                </div>
+                <ActiveListItem v-for="item in activeList.items" :key="item.id" :item="item"
+                    @deleteItem="requestDeleteItem" />
             </div>
 
             <div class="newItemBox" v-if="requestingNewItem">
                 <form class="relative flex justifyEnd alignCenter">
-                    <input 
-                        class="itemText grow"
-                        type="text" 
-                        v-model="newItemText"
-                        placeholder="Make pizza"
-                        v-focus>
+                    <input class="itemText grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
                     <div class="closeButtonframe flex alignCenter gap10 h100">
-                        <svg 
-                            viewBox="0 -960 960 960" 
-                            class="pointer icon"
-                            @click="saveNewItem">
-                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                        <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                         </svg>
 
-                        <svg @click="newItem = null"
-                            viewBox="0 -960 960 960" 
-                            class="pointer icon">
-                            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        <svg @click="newItem = null" viewBox="0 -960 960 960" class="pointer icon">
+                            <path
+                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                         </svg>
                     </div>
                 </form>
@@ -143,15 +125,5 @@ input[type="text"] {
     width: 30px;
     height: 30px;
 }
-.item {
-    padding: 15px 20px;
-    border: 1px solid var(--gray-light);
-    border-radius: 10px;
-    margin-block: 8px;
-}
-.item .text {
-    font-size: 21px;
-    font-weight: 700;
-    color: var(--graylight);
-}
+
 </style>

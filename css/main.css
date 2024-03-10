@@ -8,6 +8,7 @@
 :root {
     --dark: rgb(1, 54, 87);
     --darker: rgb(0, 33, 53);
+    --super-dark: rgb(0, 13, 22);
     --color: rgb(231, 179, 83);
     --gray-light: rgb(212, 212, 212);
     --gray-mid: rgb(42, 69, 87);
@@ -16,7 +17,7 @@
 }
 
 html {
-    background-color: var(--darker);
+    background-color: var(--super-dark);
 }
 
 body {

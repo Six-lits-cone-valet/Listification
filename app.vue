@@ -40,6 +40,7 @@ onMounted(async () => {
 main {
     flex-grow: 1;
     background-color: var(--darker);
+    padding: 10px;
 }
 
 

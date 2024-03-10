@@ -50,13 +50,14 @@ function deleteItem(itemId) {
 <style scoped>
 .item {
     height: 48px;
-    padding-left: 15px;
+    
     border: 1px solid var(--gray-light);
     border-radius: 10px;
     margin-block: 8px;
     overflow: hidden;
 }
 .slider {
+    padding-left: 15px;
     transition: 300ms ease;
 }
 .textVisible .slider{
@@ -64,6 +65,9 @@ function deleteItem(itemId) {
 }
 .menuVisible .slider {
     transform: translateY(-100%);
+}
+.slider.menu {
+    background-color: var(--dark);
 }
 .text {
     font-size: 21px;

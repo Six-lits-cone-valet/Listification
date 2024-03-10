@@ -1,6 +1,9 @@
 import { openDB } from 'idb';
 
-export { initiateIdb };
+export { 
+    initiateIdb,
+    deleteDatabaseByName
+};
 
 async function initiateIdb() {
     let dbCreated = false;
@@ -36,4 +39,9 @@ async function initiateIdb() {
     }
 
     return { dbCreated, persistent };
+}
+
+async function deleteDatabaseByName(name) {
+    const request = await indexedDB.deleteDatabase(name);
+    localStorage.removeItem('dbExists');
 }

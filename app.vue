@@ -14,7 +14,7 @@ onMounted(async () => {
 
 <template>
   <div class="appBox flex column ">
-    <Header />
+    <HeaderMain />
 
     <main v-if="browserIsCompatible" class="" >
         <Welcome v-if="!appState.dbExists" />

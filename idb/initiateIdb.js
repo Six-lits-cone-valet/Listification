@@ -42,6 +42,17 @@ async function initiateIdb() {
 }
 
 async function deleteDatabaseByName(name) {
-    const request = await indexedDB.deleteDatabase(name);
-    localStorage.removeItem('dbExists');
+    const DBDeleteRequest = window.indexedDB.deleteDatabase(name);
+
+    DBDeleteRequest.onerror = (event) => {
+        console.error("Error deleting database.");
+    };
+
+    DBDeleteRequest.onsuccess = (event) => {
+        localStorage.removeItem('dbExists');
+        location.reload();
+        console.log("Database deleted successfully");
+
+        console.log(event.result); // should be undefined
+    };
 }

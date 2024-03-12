@@ -9,7 +9,7 @@ const appState = useAppState();
                 Listify
             </span>
         </h1>
-        <HeaderDeleteData />
+        <!-- <HeaderDeleteData /> -->
 
         <div class="h100 flex alignCenter gap10">
             <svg id="myLists" class="pointer" @click="appState.activeDialog = 'myLists'" viewBox="0 -960 960 960">

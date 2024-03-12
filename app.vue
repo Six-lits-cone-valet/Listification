@@ -20,6 +20,7 @@ onMounted(async () => {
         <Welcome v-if="!appState.dbExists" />
 
         <div v-else class="full relative">
+            <ElementBox />
             <ActiveListMain class=""/>
             
             <DialogBox v-if="appState.activeDialog" />

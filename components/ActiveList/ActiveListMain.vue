@@ -102,13 +102,6 @@ watch(
                     </button>
                 </div>
             </div>
-
-            <!-- <div class="items" v-if="activeList.items.length">
-                <ActiveListItem v-for="item in activeList.items" :key="item.id" :item="item"
-                    @deleteItem="requestDeleteItem" />
-            </div> -->
-
-
         </main>
     </section>
 </template>
@@ -120,11 +113,12 @@ header {
 }
 
 button {
+    max-height: 100%;
     background-color: #ffffff33;
     padding: 3px 8px 3px 15px;
     border: 1px solid var(--gray-light);
     border-radius: 100px;
-    max-height: 100%;
+    margin: 3px 3px 0 0;
 }
 button span {
     font-weight: 700;

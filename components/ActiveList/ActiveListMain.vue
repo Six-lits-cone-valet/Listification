@@ -14,22 +14,22 @@ const newItemText = ref('');
 async function saveNewItem() {
     if ( appState.value.isPending ||
          newItemText.value === '' )  {
-            console.log(appState.value.isPending)
-        console.log(newItemText.value)
         return
     }
     appState.value.isPending = true;
     await createNewItem(appState.value.activeList, newItemText.value);
     activeList.value = await getListById(appState.value.activeList);
-    console.log('activeList.value:', activeList.value);
     requestingNewItem.value = false;
     newItemText.value = "";
     appState.value.isPending = false;
 }
-async function requestDeleteItem(itemId) {
+async function requestDeleteItem(store, itemId) {
+    console.log(store, itemId);
     if ( appState.value.isPending ) return;
     appState.value.isPending = true;
-    await deleteItem(itemId);
+    if(store === 'items') {
+        await deleteItem(itemId);
+    }
     activeList.value = await getListById(appState.value.activeList);
     appState.value.isPending = false;
 }
@@ -39,9 +39,7 @@ watch(
   async (newId) => {
 
     try {
-        console.log('trying')
         activeList.value = await getListById(newId);
-        console.log('trying again')
     } catch (error) {
         console.error('Error getting list:', error);
     }
@@ -74,9 +72,17 @@ watch(
 
         <main>
             <div class="items" v-if="activeList.items.length">
-                <ActiveListItem v-for="item in activeList.items" :key="item.id" :item="item"
+                <ElementBox v-for="item in activeList.items" :key="item.id" 
+                :text="item.text" 
+                store="items"
+                :itemId="item.id"
                     @deleteItem="requestDeleteItem" />
             </div>
+
+            <!-- <div class="items" v-if="activeList.items.length">
+                <ActiveListItem v-for="item in activeList.items" :key="item.id" :item="item"
+                    @deleteItem="requestDeleteItem" />
+            </div> -->
 
             <div class="newItemBox" v-if="requestingNewItem">
                 <form class="relative flex justifyEnd alignCenter">

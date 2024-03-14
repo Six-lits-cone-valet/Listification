@@ -5,14 +5,14 @@ const appState = useAppState();
 
 const lists = ref(null);
 
-function setListAsActive(e) {
-
-    const listId = e.currentTarget.dataset.listid
+function setListAsActive(listId) {
     appState.value.activeList = listId;
     setActiveList(listId);
     appState.value.activeDialog = '';
 }
-
+async function deleteList(store, listId) {
+    console.log(store, listId);
+}
 onMounted(async () => {
     lists.value = await getLists();
 });
@@ -21,7 +21,16 @@ onMounted(async () => {
 
 <template>
     <div class="grow flex column gap10 pad20">
-        <div 
+
+        <ElementCard 
+            v-for="list in lists" :key="list.id" 
+            class="pointer"
+            @click="setListAsActive(list.id)"
+            @deleteItem="deleteList"
+            :text="list.name"
+            :itemId="list.id"
+            store="lists"/>
+        <!-- <div 
             v-for="list in lists" :key="list.id"
             class="list flex alignCenter gap20 pointer"
             @click="setListAsActive"
@@ -30,7 +39,7 @@ onMounted(async () => {
             <DialogThemeIcon :iconId="list.theme" />
 
             <h2>{{ list.name }}</h2>  
-        </div>
+        </div> -->
     </div>
 </template>
 

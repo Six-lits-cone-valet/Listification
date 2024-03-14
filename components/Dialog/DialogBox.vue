@@ -43,17 +43,21 @@ const dialogs = {
 
 <style scoped>
 .dialogBox {
+    
     background-color: rgba(0, 29, 38, 0.709);
+    
 }
 .dialog {
     width: min(400px, 90%);
     min-height: 300px;
+    max-height: 75vh;
     background-color: var(--dark);
     border: 1px solid var(--gray-mid);
     border-radius: 10px;
     box-shadow: 1px 1px 5px rgb(0, 32, 25);
     box-shadow: 0px 0px 5px rgba(101, 211, 255, 0.115);
     overflow: hidden;
+    overflow-y: scroll;
 }
 h1 {
     padding: 10px;

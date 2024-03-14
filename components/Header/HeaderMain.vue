@@ -3,7 +3,7 @@ const appState = useAppState();
 </script>
 
 <template>
-    <header class="flex justifyBetween">
+    <header class="flex justifyBetween alignCenter">
         <h1>
             <span>
                 Listification
@@ -28,7 +28,8 @@ const appState = useAppState();
 
 <style scoped>
 header {
-    padding: 10px;
+    height: 60px;
+    padding-inline: 10px;
     background-color: var(--dark);
     border-bottom: 1px solid var(--color);
 }

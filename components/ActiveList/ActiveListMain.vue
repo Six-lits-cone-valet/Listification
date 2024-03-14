@@ -14,24 +14,29 @@ const newItemText = ref('');
 async function saveNewItem() {
     if ( appState.value.isPending ||
          newItemText.value === '' )  {
-            console.log(appState.value.isPending)
-        console.log(newItemText.value)
         return
     }
     appState.value.isPending = true;
     await createNewItem(appState.value.activeList, newItemText.value);
     activeList.value = await getListById(appState.value.activeList);
-    console.log('activeList.value:', activeList.value);
     requestingNewItem.value = false;
     newItemText.value = "";
     appState.value.isPending = false;
 }
-async function requestDeleteItem(itemId) {
+async function requestDeleteItem(store, itemId) {
+ 
     if ( appState.value.isPending ) return;
     appState.value.isPending = true;
-    await deleteItem(itemId);
+    if(store === 'items') {
+        await deleteItem(itemId);
+    }
     activeList.value = await getListById(appState.value.activeList);
     appState.value.isPending = false;
+}
+
+function cancelNewItemCreation() {
+    requestingNewItem.value = false;
+    newItemText.value = "";
 }
 
 watch(
@@ -39,9 +44,7 @@ watch(
   async (newId) => {
 
     try {
-        console.log('trying')
         activeList.value = await getListById(newId);
-        console.log('trying again')
     } catch (error) {
         console.error('Error getting list:', error);
     }
@@ -57,61 +60,80 @@ watch(
 
 </script>
 <template>
-    <section class="full" v-if="activeList">
-        <header class="flex justifyBetween alignCenter gap10 pad20" v-if="appState.activeList">
+    <section class="full flex column" v-if="activeList">
+        <header class="flex justifyBetween alignCenter gap10" v-if="appState.activeList">
             <h2 class="">
                 {{ activeList.name }}
             </h2>
 
-            <button class="flex alignCenter gap10 pointer colorOnHover" @click.prevent="requestingNewItem = true">
-                <span class="centered h100"> New item </span>
 
-                <svg class="icon " viewBox="0 -960 960 960">
-                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-                </svg>
-            </button>
         </header>
 
-        <main>
-            <div class="items" v-if="activeList.items.length">
+        <main class="flex column ">
+            <div class="items h100 flex column gap10">
+                <ElementCard v-if="activeList.items.length" v-for="item in activeList.items" :key="item.id"
+                    :text="item.text" store="items" :itemId="item.id" @deleteItem="requestDeleteItem" />
+
+                <div class="newItemBox" v-if="requestingNewItem">
+                    <form class="relative flex justifyEnd alignCenter">
+                        <input class="itemText grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
+
+                        <div class="closeButtonframe flex alignCenter gap10 h100">
+                            <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
+                                <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                            </svg>
+
+                            <svg @click="cancelNewItemCreation" viewBox="0 -960 960 960" class="pointer icon">
+                                <path
+                                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="flex justifyEnd" v-else>
+                    <button class="flex alignCenter gap10 pointer colorOnHover"
+                        @click.prevent="requestingNewItem = true">
+                        <span class="centered h100"> New item </span>
+
+                        <svg class="icon " viewBox="0 -960 960 960">
+                            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- <div class="items" v-if="activeList.items.length">
                 <ActiveListItem v-for="item in activeList.items" :key="item.id" :item="item"
                     @deleteItem="requestDeleteItem" />
-            </div>
+            </div> -->
 
-            <div class="newItemBox" v-if="requestingNewItem">
-                <form class="relative flex justifyEnd alignCenter">
-                    <input class="itemText grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
-                    <div class="closeButtonframe flex alignCenter gap10 h100">
-                        <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
-                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
-                        </svg>
-
-                        <svg @click="newItem = null" viewBox="0 -960 960 960" class="pointer icon">
-                            <path
-                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                        </svg>
-                    </div>
-                </form>
-            </div>
         </main>
     </section>
 </template>
 
 <style scoped>
+header {
+    height: 60px;
+    flex-shrink: 0;
+}
+
 button {
     background-color: #ffffff33;
     padding: 3px 8px 3px 15px;
     border: 1px solid var(--gray-light);
     border-radius: 100px;
+    max-height: 100%;
 }
 button span {
     font-weight: 700;
 }
 
 .newItemBox {
-    background-color: var(--dark);
-    border-bottom: 1px solid var(--gray-light);
+    background-color: var(--success);
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
 }
 input[type="text"] {
     /* width: 100%; */
@@ -125,5 +147,10 @@ input[type="text"] {
     width: 30px;
     height: 30px;
 }
-
+main {
+    height: calc(100% - 60px);
+}
+.items {
+    overflow: scroll;
+}
 </style>

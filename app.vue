@@ -13,21 +13,21 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="appBox flex column ">
-    <HeaderMain />
+    <div class="appBox  overflowHidden">
+        <HeaderMain />
 
-    <main v-if="browserIsCompatible" class="" >
-        <Welcome v-if="!appState.dbExists" />
+        <main v-if="browserIsCompatible" class="">
+            <Welcome v-if="!appState.dbExists" />
 
-        <div v-else class="full relative">
-            <ActiveListMain class=""/>
-            
-            <DialogBox v-if="appState.activeDialog" />
-        </div>
-    </main>
+            <div v-else class="full relative h100">
+                <ActiveListMain class="" />
 
-    <Bouzeux v-else />
-  </div>
+                <DialogBox v-if="appState.activeDialog" />
+            </div>
+        </main>
+
+        <Bouzeux v-else />
+    </div>
 </template>
 
 <style scoped>
@@ -38,9 +38,10 @@ onMounted(async () => {
 }
 
 main {
+    height: calc(100% - 60px);
     flex-grow: 1;
     background-color: var(--darker);
-    padding: 10px;
+    padding: 0px 10px 0px 10px; 
 }
 
 

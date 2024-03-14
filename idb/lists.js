@@ -26,17 +26,13 @@ async function getLists(limit = 10) {
 }
 
 async function getListById(id) {
-    console.log('getListById called with id:', id);
     try {
         const db = await openDB('listify', 1);
-        console.log('Database opened');
         const tx = db.transaction(['lists', 'items'], 'readonly');
         const listStore = tx.objectStore('lists');
         const itemsStore = tx.objectStore('items');
         const list = await listStore.get(id);
-        console.log('List retrieved:', list);
         const itemCount = await itemsStore.count();
-        console.log('Number of items:', itemCount);
 
         const itemsTx = db.transaction('items', 'readonly');
         const store = itemsTx.objectStore('items');

@@ -14,6 +14,9 @@
     --gray-mid: rgb(42, 69, 87);
     --gray-dark: rgb(25, 40, 51);
     --gray-darker: rgb(120, 120, 120);
+
+    --danger: rgb(121, 58, 30);
+    --success: rgb(25, 84, 38);
 }
 
 html {

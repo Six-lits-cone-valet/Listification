@@ -6,7 +6,7 @@ const appState = useAppState();
     <header class="flex justifyBetween">
         <h1>
             <span>
-                Listify
+                Listification
             </span>
         </h1>
         <!-- <HeaderDeleteData /> -->

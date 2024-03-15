@@ -22,6 +22,7 @@ app: {
             { rel: 'shortcut icon', href: '/web-assets/favicon.ico' }
         ],
         meta: [
+            { name: 'theme-color', content: '#013657' },
             { name: 'og:title', property: 'og:title', content: 'Listification'},
             { name: 'og:description', property: 'og:description', content: 'Listification is a web app that allows you to create list locally, without the need of an internet connection.' },
             { name: 'og:image' , property: 'og:image', content: '/seo-assets/banner.png' },

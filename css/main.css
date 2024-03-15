@@ -17,6 +17,7 @@
 
     --danger: rgb(121, 58, 30);
     --success: rgb(25, 84, 38);
+    --important: rgb(231, 172, 25);
 }
 
 html {
@@ -52,4 +53,8 @@ body {
 .itemText {
     font-size: 20px;
     font-weight: 600;
+}
+
+.fill_important {
+    color: var(--important);
 }

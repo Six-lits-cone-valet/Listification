@@ -9,6 +9,11 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['deleteItem']);
+
+function markAsImportant(store, itemId) {
+    console.log("mark as important", store, itemId);
+}
+
 </script>
 
 <template>
@@ -46,6 +51,13 @@ const emit = defineEmits(['deleteItem']);
                         class="icon delete pointer">
                         <path
                             d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                    </svg>
+
+                    <!-- gmark as important -->
+                    <svg name="imortant" viewBox="0 -960 960 960"
+                        @click.stop="markAsImportant(store, itemId)" 
+                        class="icon fill_important delete pointer">
+                        <path d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z" />
                     </svg>
                 </div>
                 <!-- cancel -->

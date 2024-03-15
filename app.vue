@@ -19,7 +19,7 @@ onMounted(async () => {
         <main v-if="browserIsCompatible" class="">
             <Welcome v-if="!appState.dbExists" />
 
-            <div v-else class="full relative h100">
+            <div v-else class="mainContentbox full relative h100">
                 <ActiveListMain class="" />
 
                 <DialogBox v-if="appState.activeDialog" />
@@ -41,8 +41,9 @@ main {
     height: calc(100% - 60px);
     flex-grow: 1;
     background-color: var(--darker);
-    padding: 0px 10px 0px 10px; 
 }
-
+.mainContentbox {
+    padding: 0px 10px 0px 10px;
+}
 
 </style>

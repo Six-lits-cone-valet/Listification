@@ -23,16 +23,6 @@ async function saveNewItem() {
     newItemText.value = "";
     appState.value.isPending = false;
 }
-async function requestDeleteItem(store, itemId) {
- 
-    if ( appState.value.isPending ) return;
-    appState.value.isPending = true;
-    if(store === 'items') {
-        await deleteItem(itemId);
-    }
-    activeList.value = await getListById(appState.value.activeList);
-    appState.value.isPending = false;
-}
 
 function cancelNewItemCreation() {
     requestingNewItem.value = false;
@@ -72,7 +62,7 @@ watch(
         <main class="flex column ">
             <div class="items h100 flex column gap10">
                 <ElementCard v-if="activeList.items.length" v-for="item in activeList.items" :key="item.id"
-                    :text="item.text" store="items" :itemId="item.id" @deleteItem="requestDeleteItem" />
+                    :text="item.text" store="items" :itemId="item.id" />
 
                 <div class="newItemBox" v-if="requestingNewItem">
                     <form class="relative flex justifyEnd alignCenter">

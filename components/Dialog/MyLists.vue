@@ -10,23 +10,25 @@ function setListAsActive(listId) {
     setActiveList(listId);
     appState.value.activeDialog = '';
 }
-async function deleteList(store, listId) {
-    console.log(store, listId);
-}
-onMounted(async () => {
+
+async function loadLists() {
     lists.value = await getLists();
+}
+
+onMounted(async () => {
+    loadLists()
 });
 
 </script>
 
 <template>
-    <div class="grow flex column gap10 pad20">
+    <div class="grow flex column gap10">
 
         <ElementCard 
             v-for="list in lists" :key="list.id" 
             class="pointer"
             @click="setListAsActive(list.id)"
-            @deleteItem="deleteList"
+            @getLists="loadLists"
             :text="list.name"
             :itemId="list.id"
             store="lists"/>

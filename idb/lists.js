@@ -1,5 +1,5 @@
 import { openDB } from 'idb';
-export { createNewList, getLists, getListById };
+export { createNewList, getLists, getListById, deleteListById };
 
 async function createNewList(name, theme) {
     const db = await openDB('listify', 1);
@@ -45,4 +45,14 @@ async function getListById(id) {
     } catch (error) {
         console.error('Error in getListById:', error);
     }
+}
+
+async function deleteListById(id) {
+    const db = await openDB('listify', 1);
+    const tx = db.transaction('lists', 'readwrite');
+    const store = tx.objectStore('lists');
+    const request = await store.delete(id);
+    await tx.done;
+    
+    return request;
 }

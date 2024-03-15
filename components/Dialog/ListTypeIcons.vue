@@ -15,14 +15,9 @@ function handleClick(themeId) {
     <div class="box w100">
         <p>list theme</p>
 
-        <div class="scroller w100 flex justifyBetween gap10 marTop20">
-            <DialogThemeIcon 
-                v-for="icon in Object.keys(icons)" :key="icon"
-                :iconId="icon"
-                :active="activeTheme === icon"
-                @click="handleClick(icon)" 
-                class="themeIcon"
-                border/>
+        <div class="scroller deepField w100 flex justifyBetween gap10 marTop20">
+            <DialogThemeIcon v-for="icon in Object.keys(icons)" :key="icon" :iconId="icon"
+                :active="activeTheme === icon" @click="handleClick(icon)" class="themeIcon" border />
 
         </div>
     </div>
@@ -33,7 +28,7 @@ function handleClick(themeId) {
     border: none;
 }
 .scroller {
-    padding-bottom: 10px;
+    padding: 10px;
     display: flex;
     gap: 10px;
     overflow-x: scroll;

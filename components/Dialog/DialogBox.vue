@@ -20,16 +20,17 @@ const dialogs = {
                     {{ dialogs[appState.activeDialog].title}}
                 </span>
 
-                <svg @click="appState.activeDialog = ''"
-                    viewBox="0 -960 960 960" 
-                    class="pointer icon">
-                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                <svg @click="appState.activeDialog = ''" viewBox="0 -960 960 960" class="pointer icon">
+                    <path
+                        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                 </svg>
             </h1>
 
-            <DialogNewList v-if="appState.activeDialog === 'newList'" />
+            <div class="content">
+                <DialogNewList v-if="appState.activeDialog === 'newList'" />
 
-            <DialogMyLists v-if="appState.activeDialog === 'myLists'" />
+                <DialogMyLists v-if="appState.activeDialog === 'myLists'" />
+            </div>
         </div>
     </section>
 </template>
@@ -48,7 +49,7 @@ const dialogs = {
     
 }
 .dialog {
-    width: min(400px, 90%);
+    width: min(400px, 96%);
     min-height: 300px;
     max-height: 75vh;
     background-color: var(--dark);

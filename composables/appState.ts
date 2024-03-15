@@ -4,14 +4,16 @@ export const useAppState = () => {
         activeList: string,
         myLists: Array<string>,
         dbExists: boolean,
-        isPending: boolean
+        isPending: boolean,
+        handPreference: string
     }>('appState', 
         () => ({ 
             activeDialog: '',
             activeList: '',
             myLists: [],
             dbExists: false,
-            isPending: false
+            isPending: false,
+            handPreference: 'right'
         })
     );
 }

@@ -1,6 +1,10 @@
 <script setup>
+import { getLists, deleteListById } from '@/idb/lists';
+
 const drawerPosition = ref('textVisible');
 const menuOption = ref('');
+
+const appState = useAppState();
 
 const props = defineProps({
     text: Object,
@@ -8,12 +12,28 @@ const props = defineProps({
     itemId: String
 });
 
-const emit = defineEmits(['deleteItem']);
+const emit = defineEmits(['getLists']);
 
 function markAsImportant(store, itemId) {
     console.log("mark as important", store, itemId);
 }
 
+async function deleteItem() {
+    if (appState.value.isPending) return;
+
+    appState.value.isPending = true;
+
+    if (props.store === 'items') {
+        await deleteItem(props.itemId);
+        activeList.value = await getListById(appState.value.activeList);
+    } else if (props.store === 'lists') {
+        await deleteListById(props.itemId);
+        emit('getLists');
+    }
+
+    
+    appState.value.isPending = false;
+}
 </script>
 
 <template>
@@ -79,7 +99,7 @@ function markAsImportant(store, itemId) {
 
                     <div class="icons">
                         <!-- confirm delete item-->
-                        <svg name="check" viewBox="0 -960 960 960" @click.stop="$emit('deleteItem', store, itemId)"
+                        <svg name="check" viewBox="0 -960 960 960" @click.stop="deleteItem"
                             class="pointer icon">
                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                         </svg>

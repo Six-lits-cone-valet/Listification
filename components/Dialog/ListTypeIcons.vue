@@ -12,28 +12,30 @@ function handleClick(themeId) {
 </script>
 
 <template>
-    <fieldset>
-        <legend>Select theme</legend>
+    <div class="box w100">
+        <p>list theme</p>
 
-        <div class="scroller flex justifyBetween gap10 marTop20">
+        <div class="scroller w100 flex justifyBetween gap10 marTop20">
             <DialogThemeIcon 
                 v-for="icon in Object.keys(icons)" :key="icon"
                 :iconId="icon"
                 :active="activeTheme === icon"
                 @click="handleClick(icon)" 
+                class="themeIcon"
                 border/>
 
         </div>
-    </fieldset>
+    </div>
 </template>
 
 <style scoped>
-fieldset {
+.box {
     border: none;
 }
 .scroller {
     display: flex;
     gap: 10px;
+    overflow-x: scroll;
 }
 
 input[type="radio"] {
@@ -43,5 +45,8 @@ input[type="radio"] {
 }
 .iconFrame {
     overflow: visible;
+}
+.themeIcon {
+    flex-shrink: 0;
 }
 </style>

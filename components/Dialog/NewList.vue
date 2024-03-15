@@ -32,9 +32,7 @@ async function submitForm() {
         <form ref="form" class="flex column gap20" @submit.prevent="submitForm">
             <DialogListTypeIcons @selectTheme="setTheme"/>
 
-            <div class="flex column gap10">
-                <label for="newList">New List</label>
-                
+            <div class="flex column gap10">                
                 <input id="newList" type="text" placeholder="List Name" v-model="newListTitle" autocomplete="off"/>
             </div>
             <button class="pointer" type="submit">Create</button>

@@ -33,6 +33,7 @@ function handleClick(themeId) {
     border: none;
 }
 .scroller {
+    padding-bottom: 10px;
     display: flex;
     gap: 10px;
     overflow-x: scroll;

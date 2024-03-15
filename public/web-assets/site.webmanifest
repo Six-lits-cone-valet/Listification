@@ -1,6 +1,7 @@
 {
     "name": "Listification",
     "short_name": "Listification",
+    "start_url": "https://listification.netlify.app",
     "icons": [
         {
             "src": "/web-assets/android-chrome-192x192.png",

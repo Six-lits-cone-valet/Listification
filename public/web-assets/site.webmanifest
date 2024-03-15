@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Listification",
+    "short_name": "Listification",
     "icons": [
         {
             "src": "/web-assets/android-chrome-192x192.png",
@@ -11,9 +11,15 @@
             "src": "/web-assets/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/web-assets.maskable-logo.png",
+            "sizes": "524x524",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#e7b353",
+    "background_color": "#002135",
     "display": "standalone"
 }

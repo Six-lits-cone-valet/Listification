@@ -22,7 +22,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="grow flex column gap10">
+    <div class="lists grow flex column gap10">
         <!-- <p v-if="lists.length === 0">
             Vous n'avez pas de liste pour le moment.
         </p> -->
@@ -42,5 +42,6 @@ onMounted(async () => {
     background-color: var(--dark);
     border: 1px solid var(--gray-light);
     border-radius: 5px;
+    overflow-y: scroll;
 }
 </style>

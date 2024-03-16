@@ -70,7 +70,7 @@ watch(
                     :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
                     @refreshActiveList="loadItems" />
 
-                <div class="newItemBox" v-if="requestingNewItem">
+                <div class="newItemBox w100" v-if="requestingNewItem">
                     <form class="relative flex justifyEnd alignCenter">
                         <input class="itemText grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 

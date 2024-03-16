@@ -70,9 +70,9 @@ watch(
                     :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
                     @refreshActiveList="loadItems" />
 
-                <div class="newItemBox w100" v-if="requestingNewItem">
-                    <form class="relative w100 flex justifyEnd alignCenter">
-                        <input class="itemText grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
+                <!-- <div class="newItemBox w100"> -->
+                    <form class="newItemBox relative w100 flex alignCenter" v-if="requestingNewItem">
+                        <input class="newItem grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
                         <div class="closeButtonframe flex alignCenter gap10 h100">
                             <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
@@ -85,12 +85,12 @@ watch(
                             </svg>
                         </div>
                     </form>
-                </div>
+                <!-- </div> -->
 
                 <ButtonCreateNew @clicked="requestingNewItem = true">
                     Create New Item
                 </ButtonCreateNew>
-          
+
             </div>
         </main>
     </section>
@@ -108,7 +108,9 @@ header {
     border-radius: 10px;
 }
 
-input {
+.newItem {
+    font-size: 18px;
+    font-weight: 700;
     color: var(--light);
     padding: 10px;
 }

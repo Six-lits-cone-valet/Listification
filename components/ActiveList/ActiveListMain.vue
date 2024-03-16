@@ -107,12 +107,11 @@ header {
     border: 1px solid var(--gray-light);
     border-radius: 10px;
 }
-form {
+
+input {
+    color: var(--light);
     padding: 10px;
 }
-/* input {
-    color: var(--light);
-} */
 .closeButtonframe {
     margin: 0 10px;
 }

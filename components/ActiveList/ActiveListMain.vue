@@ -72,7 +72,7 @@ watch(
 
                 <div class="newItemBox w100 r" v-if="requestingNewItem">
                     <form class="relative b flex justifyEnd alignCenter">
-                        <input class="itemText r grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
+                        <input class="r grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
                         <div class="closeButtonframe flex alignCenter gap10 h100">
                             <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
@@ -107,8 +107,11 @@ header {
     border: 1px solid var(--gray-light);
     border-radius: 10px;
 }
-input {
+form {
     padding: 10px;
+}
+input {
+    
     color: var(--light);
 }
 .closeButtonframe {

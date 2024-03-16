@@ -12,7 +12,9 @@ input {
 .w100 {
     width: 100%;
 }
-
+.maxW100 {
+    max-width: 100%;
+}
 .h100 {
     height: 100%;
 }
@@ -60,6 +62,9 @@ input {
 .row {
     flex-direction: row;
 }
+.rowReverse {
+    flex-direction: row-reverse;
+}   
 
 .wrap {
     flex-wrap: wrap;

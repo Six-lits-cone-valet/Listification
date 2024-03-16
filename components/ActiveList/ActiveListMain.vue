@@ -29,6 +29,10 @@ function cancelNewItemCreation() {
     newItemText.value = "";
 }
 
+async function loadItems() {
+    activeList.value = await getListById(appState.value.activeList);
+}
+
 watch(
   () => appState.value.activeList,
   async (newId) => {
@@ -49,6 +53,7 @@ watch(
 // })
 
 </script>
+
 <template>
     <section class="full flex column" v-if="activeList">
         <header class="flex justifyBetween alignCenter gap10" v-if="appState.activeList">
@@ -62,7 +67,8 @@ watch(
         <main class="flex column ">
             <div class="items h100 flex column gap10">
                 <ElementCard v-if="activeList.items.length" v-for="item in activeList.items" :key="item.id"
-                    :text="item.text" store="items" :itemId="item.id" />
+                    :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
+                    @refreshActiveList="loadItems" />
 
                 <div class="newItemBox" v-if="requestingNewItem">
                     <form class="relative flex justifyEnd alignCenter">
@@ -81,16 +87,10 @@ watch(
                     </form>
                 </div>
 
-                <div class="flex justifyEnd" v-else>
-                    <button class="flex alignCenter gap10 pointer colorOnHover"
-                        @click.prevent="requestingNewItem = true">
-                        <span class="centered h100"> New item </span>
-
-                        <svg class="icon " viewBox="0 -960 960 960">
-                            <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-                        </svg>
-                    </button>
-                </div>
+                <ButtonCreateNew @clicked="requestingNewItem = true">
+                    Create New 
+                </ButtonCreateNew>
+          
             </div>
         </main>
     </section>
@@ -100,18 +100,6 @@ watch(
 header {
     height: 60px;
     flex-shrink: 0;
-}
-
-button {
-    max-height: 100%;
-    background-color: #ffffff33;
-    padding: 3px 8px 3px 15px;
-    border: 1px solid var(--gray-light);
-    border-radius: 100px;
-    margin: 3px 3px 0 0;
-}
-button span {
-    font-weight: 700;
 }
 
 .newItemBox {

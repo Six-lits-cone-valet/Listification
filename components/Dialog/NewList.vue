@@ -19,7 +19,7 @@ async function submitForm() {
     
     isPending.value = true;
     const newListId = await createNewList(newListTitle.value, newListTheme.value);
-    appState.value.activeList = 5;
+
     form.value.reset();
     isPending.value = false;
     appState.value.activeDialog = 'myLists';

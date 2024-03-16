@@ -1,5 +1,11 @@
 import { openDB } from 'idb';
-export { createNewList, getLists, getListById, deleteListById };
+export { 
+        createNewList, 
+        getLists, 
+        getListById, 
+        deleteListById ,
+        toggleListIsImportant
+    };
 
 async function createNewList(name, theme) {
     const db = await openDB('listify', 1);
@@ -32,7 +38,6 @@ async function getListById(id) {
         const listStore = tx.objectStore('lists');
         const itemsStore = tx.objectStore('items');
         const list = await listStore.get(id);
-        const itemCount = await itemsStore.count();
 
         const itemsTx = db.transaction('items', 'readonly');
         const store = itemsTx.objectStore('items');
@@ -55,4 +60,14 @@ async function deleteListById(id) {
     await tx.done;
     
     return request;
+}
+
+async function toggleListIsImportant(listId) {
+    const db = await openDB('listify', 1);
+    const tx = db.transaction('lists', 'readwrite');
+    const store = tx.objectStore('lists');
+    const list = await store.get(listId);
+    list.isImportant = !list.isImportant;
+    store.put(list);
+    await tx.done;
 }

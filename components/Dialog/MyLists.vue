@@ -23,25 +23,17 @@ onMounted(async () => {
 
 <template>
     <div class="grow flex column gap10">
+        <!-- <p v-if="lists.length === 0">
+            Vous n'avez pas de liste pour le moment.
+        </p> -->
+        
+        <ElementCard v-for="list in lists" :key="list.id" class="pointer" @click="setListAsActive(list.id)"
+            @elementDeleted="loadLists" @refresh="loadLists" :element="list" :text="list.name" :itemId="list.id"
+            store="lists" />
 
-        <ElementCard 
-            v-for="list in lists" :key="list.id" 
-            class="pointer"
-            @click="setListAsActive(list.id)"
-            @getLists="loadLists"
-            :text="list.name"
-            :itemId="list.id"
-            store="lists"/>
-        <!-- <div 
-            v-for="list in lists" :key="list.id"
-            class="list flex alignCenter gap20 pointer"
-            @click="setListAsActive"
-            :data-listid="list.id">
-
-            <DialogThemeIcon :iconId="list.theme" />
-
-            <h2>{{ list.name }}</h2>  
-        </div> -->
+        <ButtonCreateNew @clicked="appState.activeDialog = 'newList'">
+            Create New List
+        </ButtonCreateNew>
     </div>
 </template>
 

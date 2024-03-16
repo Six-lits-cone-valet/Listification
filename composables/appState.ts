@@ -5,7 +5,7 @@ export const useAppState = () => {
         myLists: Array<string>,
         dbExists: boolean,
         isPending: boolean,
-        handPreference: string
+        leftHand: boolean
     }>('appState', 
         () => ({ 
             activeDialog: '',
@@ -13,7 +13,7 @@ export const useAppState = () => {
             myLists: [],
             dbExists: false,
             isPending: false,
-            handPreference: 'right'
+            leftHand: false
         })
     );
 }

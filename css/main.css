@@ -41,7 +41,9 @@ body {
     height: 24px;
     fill: var(--gray-light);
 }
-
+.fill_important {
+    fill: var(--important);
+}
 .colorOnHover:hover {
     color: var(--color);
     fill: var(--color);
@@ -55,9 +57,10 @@ body {
     font-weight: 600;
 }
 
-.fill_important {
-    color: var(--important);
+.fill_gray-light {
+    color: var(--gray-light);
 }
+
 
 
 

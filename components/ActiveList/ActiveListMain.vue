@@ -110,9 +110,9 @@ header {
 form {
     padding: 10px;
 }
-input {
+/* input {
     color: var(--light);
-}
+} */
 .closeButtonframe {
     margin: 0 10px;
 }

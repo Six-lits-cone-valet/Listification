@@ -71,20 +71,20 @@ watch(
                     @refreshActiveList="loadItems" />
 
                 <!-- <div class="newItemBox w100"> -->
-                    <form class="newItemBox relative w100 flex alignCenter" v-if="requestingNewItem">
-                        <input class="newItem grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
+                <div class="newItemBox relative w100 flex alignCenter" v-if="requestingNewItem">
+                    <input class="newItem" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
-                        <div class="closeButtonframe flex alignCenter gap10 h100">
-                            <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
-                                <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
-                            </svg>
+                    <div class="closeButtonframe flex alignCenter gap10 h100">
+                        <svg viewBox="0 -960 960 960" class="pointer icon" @click="saveNewItem">
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                        </svg>
 
-                            <svg @click="cancelNewItemCreation" viewBox="0 -960 960 960" class="pointer icon">
-                                <path
-                                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                            </svg>
-                        </div>
-                    </form>
+                        <svg @click="cancelNewItemCreation" viewBox="0 -960 960 960" class="pointer icon">
+                            <path
+                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        </svg>
+                    </div>
+                </div>
                 <!-- </div> -->
 
                 <ButtonCreateNew @clicked="requestingNewItem = true">
@@ -107,7 +107,9 @@ header {
     border: 1px solid var(--gray-light);
     border-radius: 10px;
 }
-
+input {
+    width: calc(100% - 70px);
+}
 .newItem {
     font-size: 18px;
     font-weight: 700;
@@ -115,6 +117,7 @@ header {
     padding: 10px;
 }
 .closeButtonframe {
+    width: 70px;
     margin: 0 10px;
 }
 .icon {

@@ -14,7 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="appBox  overflowHidden">
+    <div class="appBox relative overflowHidden">
         <HeaderMain />
 
         <main v-if="browserIsCompatible" class="">
@@ -28,6 +28,8 @@ onMounted(async () => {
         </main>
 
         <Bouzeux v-else />
+
+        <AppMenuOverlay />
     </div>
 </template>
 

@@ -107,8 +107,7 @@ header {
     border: 1px solid var(--gray-light);
     border-radius: 10px;
 }
-input[type="text"] {
-    /* width: 100%; */
+input {
     padding: 10px;
     color: var(--light);
 }

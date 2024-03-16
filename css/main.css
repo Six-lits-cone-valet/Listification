@@ -44,11 +44,13 @@ body {
 .fill_important {
     fill: var(--important);
 }
-.colorOnHover:hover {
-    color: var(--color);
-    fill: var(--color);
-    border: 1px solid var(--color);
-    outline: 2px solid var(--color);
+@media ( hover: hover ) {
+    .colorOnHover:hover {
+        color: var(--color);
+        fill: var(--color);
+        border: 1px solid var(--color);
+        outline: 2px solid var(--color);
+    }
 }
 
 

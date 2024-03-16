@@ -23,9 +23,9 @@ onMounted(async () => {
 
 <template>
     <div class="lists grow flex column gap10">
-        <!-- <p v-if="lists.length === 0">
+        <p v-if="lists && lists.length === 0">
             Vous n'avez pas de liste pour le moment.
-        </p> -->
+        </p>
         
         <ElementCard v-for="list in lists" :key="list.id" class="pointer" @click="setListAsActive(list.id)"
             @elementDeleted="loadLists" @refresh="loadLists" :element="list" :text="list.name" :itemId="list.id"

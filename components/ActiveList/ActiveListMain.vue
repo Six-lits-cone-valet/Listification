@@ -1,7 +1,8 @@
 <script setup>
+import icons from '@/assets/icons.json';
 import { getActiveList } from '@/idb/state';
 import { getListById } from '@/idb/lists';
-import { createNewItem, deleteItem } from '@/idb/items';
+import { createNewItem } from '@/idb/items';
 
 // import icons from '@/assets/icons.json';
 const appState = useAppState();
@@ -56,7 +57,12 @@ watch(
 
 <template>
     <section class="full flex column" v-if="activeList">
-        <header class="flex justifyBetween alignCenter gap10" v-if="appState.activeList">
+        <header class="flex alignCenter gap10" v-if="appState.activeList">
+            <svg viewBox="0 -960 960 960" class="themeIcon"
+                :class="[activeList.isImportant ? 'fill_important' : 'fill_gray-light']">
+                <path :d="icons[activeList.theme].path" />
+            </svg>
+
             <h2 class="">
                 {{ activeList.name }}
             </h2>
@@ -101,7 +107,10 @@ header {
     height: 60px;
     flex-shrink: 0;
 }
-
+.themeIcon {
+    width: 30px;
+    height: 30px;
+}
 .newItemBox {
     background-color: var(--success);
     border: 1px solid var(--gray-light);

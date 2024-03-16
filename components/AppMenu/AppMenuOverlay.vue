@@ -27,7 +27,7 @@ function requestMyLists() {
 
         <div class="drawer w100 absolute flex"
             :class="[{ 'visible': menuIsOpen}, { 'justifyEnd': !appState.leftHand }]">
-            <div class="menuBox flex column gap10 allEvents" :class="[{ 'alignEnd': !appState.leftHand }]">
+            <div class="menuBox flex column gap10 allEvents shadow" :class="[{ 'alignEnd': !appState.leftHand }]">
                 <AppMenuHandSwitcher />
 
                 <svg id="myLists" class="menuIcon pointer" @click="requestMyLists" viewBox="0 -960 960 960">
@@ -61,9 +61,6 @@ button:hover svg{
     fill: var(--color);
 }
 .drawer {
-    
-    
-    
     top: 100%;
     left: 0;
     transform: translateY(0%);
@@ -74,7 +71,7 @@ button:hover svg{
     transform: translateY(-100%);
 }
 .menuBox {
-    background-color: var(--dark);
+    background-color: var(--darker);
     padding: 15px;
     border: 1px solid var(--gray-light);
     border-radius: 10px;

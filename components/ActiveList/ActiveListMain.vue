@@ -70,8 +70,8 @@ watch(
                     :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
                     @refreshActiveList="loadItems" />
 
-                <div class="newItemBox" v-if="requestingNewItem">
-                    <form class="relative flex justifyEnd alignCenter">
+                <div class="newItemBox w100" v-if="requestingNewItem">
+                    <form class="relative w100 flex justifyEnd alignCenter">
                         <input class="itemText grow" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
                         <div class="closeButtonframe flex alignCenter gap10 h100">

@@ -37,7 +37,7 @@ async function submitForm() {
                     autocomplete="off" />
             </div>
 
-            <div class="flex handPreference" :class="appState.handPreference">
+            <div class="flex handPreference" :class="{ 'justifyEnd' : !appState.leftHand}">
                 <button class="pointer centered" type="submit">Create</button>
             </div>
         </form>

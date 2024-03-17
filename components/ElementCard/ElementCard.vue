@@ -247,6 +247,7 @@ async function toggleIsImportant() {
     width: 48px;
     height: 100%;
     padding: 9px;
+    flex-shrink: 0;
 }
 
 </style>

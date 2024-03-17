@@ -29,6 +29,8 @@ onMounted(async () => {
         <Bouzeux v-else />
 
         <AppMenuOverlay />
+
+        <ToasterOverLay />
     </div>
 </template>
 

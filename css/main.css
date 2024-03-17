@@ -18,6 +18,7 @@
     --danger: rgb(121, 58, 30);
     --success: rgb(25, 84, 38);
     --important: rgb(231, 172, 25);
+    --warning: rgb(112, 0, 146);
 }
 
 html {

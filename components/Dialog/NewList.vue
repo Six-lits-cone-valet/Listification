@@ -12,17 +12,34 @@ function setTheme(themeId) {
 }
 
 async function submitForm() {
-    if( isPending.value ||
-        !newListTitle.value ||
-        !newListTheme.value 
-    ) return;
-    
+    if (isPending.value) return;
+
+    if (!newListTitle.value) {
+        appState.value.message = {
+            text: 'Please enter a name for the list.',
+            type: 'warning'
+        }
+        return;
+    }
+    if (!newListTheme.value) {
+        appState.value.message = {
+            text: 'Please select a theme for the list.',
+            type: 'warning'
+        }
+        return;
+    }
+
     isPending.value = true;
     const newListId = await createNewList(newListTitle.value, newListTheme.value);
 
     form.value.reset();
     isPending.value = false;
     appState.value.activeDialog = 'myLists';
+
+    appState.value.message = {
+        text: 'The new list was successfully created.',
+        type: 'success'
+    }
 }
 
 </script>

@@ -24,8 +24,18 @@ async function requestDeleteItem() {
 
     if (props.store === 'items') {
         await deleteItem(props.itemId);
+
+        appState.value.message = {
+            text: 'The item was deleted with great success.',
+            type: 'danger'
+        };
     } else if (props.store === 'lists') {
         await deleteListById(props.itemId);
+
+        appState.value.message = {
+            text: 'The list was deleted with great success.',
+            type: 'danger'
+        };
 
         if(appState.value.activeListId === props.itemId) {
             appState.value.activeListId = '';

@@ -68,8 +68,6 @@ onMounted(async () => {
             <h2 class="">
                 {{ activeListData.name }}
             </h2>
-
-
         </header>
 
         <main class="flex column ">
@@ -78,7 +76,6 @@ onMounted(async () => {
                     :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
                     @refresh="loadItems" />
 
-                <!-- <div class="newItemBox w100"> -->
                 <div class="newItemBox relative w100 flex alignCenter" v-if="requestingNewItem">
                     <input class="newItem" type="text" v-model="newItemText" placeholder="Make pizza" v-focus>
 
@@ -93,7 +90,6 @@ onMounted(async () => {
                         </svg>
                     </div>
                 </div>
-                <!-- </div> -->
 
                 <ButtonCreateNew v-if="!requestingNewItem" @clicked="requestingNewItem = true">
                     Create New Item

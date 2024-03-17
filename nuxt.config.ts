@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 app: {
     head: {
         charset: 'utf-8', // default
-        viewport: 'width=device-width, initial-scale=1', // default,
+        viewport: 'width=device-width, user-scalable=no', // default,
         title: 'Listification',
         htmlAttrs: {
             lang: 'en'

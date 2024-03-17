@@ -1,5 +1,5 @@
 import { openDB } from 'idb';
-export { setActiveList, getActiveList };
+export { setActiveList, getActiveListId };
 
 const setActiveList = async(id) => {
     const db = await openDB('listify', 1);
@@ -9,7 +9,7 @@ const setActiveList = async(id) => {
     await tx.done;
 }
 
-const getActiveList = async() => {
+const getActiveListId = async() => {
     const db = await openDB('listify', 1);
     const tx = db.transaction('state', 'readonly');
     const store = tx.objectStore('state');

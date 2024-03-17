@@ -2,7 +2,7 @@ import { openDB } from 'idb';
 export { 
         createNewList, 
         getLists, 
-        getListById, 
+        getListDataById, 
         deleteListById ,
         toggleListIsImportant
     };
@@ -31,7 +31,7 @@ async function getLists(limit = 10) {
     return store.getAll(null, limit);
 }
 
-async function getListById(id) {
+async function getListDataById(id) {
     try {
         const db = await openDB('listify', 1);
         const tx = db.transaction(['lists', 'items'], 'readonly');
@@ -48,7 +48,7 @@ async function getListById(id) {
 
         return list;
     } catch (error) {
-        console.error('Error in getListById:', error);
+        console.error('Error in getListDataById:', error);
     }
 }
 

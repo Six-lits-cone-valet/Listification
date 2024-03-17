@@ -6,7 +6,7 @@ const appState = useAppState();
 const lists = ref(null);
 
 function setListAsActive(listId) {
-    appState.value.activeList = listId;
+    appState.value.activeListId = listId;
     setActiveList(listId);
     appState.value.activeDialog = '';
 }

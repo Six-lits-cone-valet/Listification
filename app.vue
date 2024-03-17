@@ -8,7 +8,7 @@ const appState = useAppState();
 
 onMounted(async () => {
     browserIsCompatible.value = browserSupport();
-    appState.value.activeDialog = 'myLists';
+    // appState.value.activeDialog = 'myLists';
 });
 
 </script>

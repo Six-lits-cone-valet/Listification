@@ -1,12 +1,12 @@
 <script setup>
 import icons from '@/assets/icons.json';
-import { getActiveList } from '@/idb/state';
-import { getListById } from '@/idb/lists';
+import { getActiveListId } from '@/idb/state';
+import { getListDataById } from '@/idb/lists';
 import { createNewItem } from '@/idb/items';
 
 // import icons from '@/assets/icons.json';
 const appState = useAppState();
-const activeList = ref(null);
+const activeListData = ref(null);
 
 const requestingNewItem = ref(false);
 const newItemText = ref('');
@@ -18,8 +18,8 @@ async function saveNewItem() {
         return
     }
     appState.value.isPending = true;
-    await createNewItem(appState.value.activeList, newItemText.value);
-    activeList.value = await getListById(appState.value.activeList);
+    await createNewItem(appState.value.activeListId, newItemText.value);
+    activeListData.value = await getListDataById(appState.value.activeListId);
     requestingNewItem.value = false;
     newItemText.value = "";
     appState.value.isPending = false;
@@ -31,40 +31,40 @@ function cancelNewItemCreation() {
 }
 
 async function loadItems() {
-    activeList.value = await getListById(appState.value.activeList);
+    activeListData.value = await getListDataById(appState.value.activeListId);
 }
 
 watch(
-  () => appState.value.activeList,
+  () => appState.value.activeListId,
   async (newId) => {
 
     try {
-        activeList.value = await getListById(newId);
+        activeListData.value = await getListDataById(newId);
     } catch (error) {
         console.error('Error getting list:', error);
     }
   }
 )
 
-// onMounted(async () => {
-//     let list = await getActiveList();
-//     if (list) {
-//         activeList.value = list;
-//     }
-// })
+onMounted(async () => {
+    let listId = await getActiveListId();
+    if (listId) {
+        appState.value.activeListId = listId;
+    }
+})
 
 </script>
 
 <template>
-    <section class="full flex column" v-if="activeList">
-        <header class="flex alignCenter gap10" v-if="appState.activeList">
+    <section class="full flex column" v-if="activeListData">
+        <header class="flex alignCenter gap10" v-if="appState.activeListId">
             <svg viewBox="0 -960 960 960" class="themeIcon"
-                :class="[activeList.isImportant ? 'fill_important' : 'fill_gray-light']">
-                <path :d="icons[activeList.theme].path" />
+                :class="[activeListData.isImportant ? 'fill_important' : 'fill_gray-light']">
+                <path :d="icons[activeListData.theme].path" />
             </svg>
 
             <h2 class="">
-                {{ activeList.name }}
+                {{ activeListData.name }}
             </h2>
 
 
@@ -72,7 +72,7 @@ watch(
 
         <main class="flex column ">
             <div class="items h100 flex column gap10">
-                <ElementCard v-if="activeList.items.length" v-for="item in activeList.items" :key="item.id"
+                <ElementCard v-if="activeListData.items.length" v-for="item in activeListData.items" :key="item.id"
                     :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
                     @refreshActiveList="loadItems" />
 

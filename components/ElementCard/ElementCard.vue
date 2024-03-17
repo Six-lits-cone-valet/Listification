@@ -27,8 +27,8 @@ async function requestDeleteItem() {
     } else if (props.store === 'lists') {
         await deleteListById(props.itemId);
 
-        if(appState.value.activeList === props.itemId) {
-            appState.value.activeList = '';
+        if(appState.value.activeListId === props.itemId) {
+            appState.value.activeListId = '';
         }
     }
     emit('elementDeleted');

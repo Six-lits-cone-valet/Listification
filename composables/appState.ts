@@ -1,7 +1,7 @@
 export const useAppState = () => {
     return useState<{ 
         activeDialog: string,
-        activeList: string,
+        activeListId: string,
         myLists: Array<string>,
         dbExists: boolean,
         isPending: boolean,
@@ -9,7 +9,7 @@ export const useAppState = () => {
     }>('appState', 
         () => ({ 
             activeDialog: '',
-            activeList: '',
+            activeListId: '',
             myLists: [],
             dbExists: false,
             isPending: false,

@@ -1,11 +1,23 @@
 <script setup>
+import { setLeftHand, getLeftHand } from '@/idb/state';
 const appState = useAppState();
 
-function toggleLeftHand(state) {
-    if(appState.value.leftHand !== state) {
-        appState.value.leftHand = state;
-    }
+async function toggleLeftHand(state) {
+    if ( appState.value.leftHand === state ) return;
+    if (appState.value.isPending ) return;
+
+    appState.value.isPending = true;
+
+    await setLeftHand(state);
+    appState.value.leftHand = state;
+    console.log(appState.value.leftHand);
+    
+    appState.value.isPending = false;
 }
+onMounted(async () => {
+    appState.value.leftHand = await getLeftHand();
+    console.log(appState.value.leftHand);
+});
 </script>
 
 <template>

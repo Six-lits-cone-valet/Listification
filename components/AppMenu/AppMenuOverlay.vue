@@ -12,7 +12,7 @@ function requestMyLists() {
 </script>
 <template>
     <div class="box absolute w100 bottom0 left0 noEvents flex" :class="{ 'justifyEnd' : !appState.leftHand}">
-        <button class="centered allEvents pointer">
+        <button class="centered allEvents pointer shadow">
             <svg name="menu" class="icon_medium fill_gray-light meatBalls" viewBox="0 -960 960 960"
                 @click.prevent.stop="menuIsOpen = true" v-if="!menuIsOpen">
                 <path
@@ -31,17 +31,19 @@ function requestMyLists() {
             <div class="menuBox flex column gap10 allEvents shadow" :class="[{ 'alignEnd': !appState.leftHand }]">
                 <AppMenuHandSwitcher />
 
-                <svg id="myLists" class="icon_large fill_gray-light inside pointer" @click="requestMyLists"
-                    viewBox="0 -960 960 960">
-                    <path
-                        d="M400-400h160v-80H400v80Zm0-120h320v-80H400v80Zm0-120h320v-80H400v80Zm-80 400q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
-                </svg>
+                <div class="flex">
+                    <svg id="myLists" class="icon_large fill_gray-light inside pointer" @click="requestMyLists"
+                        viewBox="0 -960 960 960">
+                        <path
+                            d="M400-400h160v-80H400v80Zm0-120h320v-80H400v80Zm0-120h320v-80H400v80Zm-80 400q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+                    </svg>
 
-                <svg id="newList" @click="requestNewList"
-                    class="icon_large fill_gray-light inside pointer color_onHover" viewBox="0 -960 960 960">
-                    <path
-                        d="M520-400h80v-120h120v-80H600v-120h-80v120H400v80h120v120ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
-                </svg>
+                    <svg id="newList" @click="requestNewList"
+                        class="icon_large fill_gray-light inside pointer color_onHover" viewBox="0 -960 960 960">
+                        <path
+                            d="M520-400h80v-120h120v-80H600v-120h-80v120H400v80h120v120ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
@@ -52,7 +54,6 @@ button {
     padding: 5px;
     background-color: var(--dark);
     border-radius: 50%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.474);
     margin: 15px;
 }
 

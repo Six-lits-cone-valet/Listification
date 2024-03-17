@@ -25,7 +25,7 @@ app: {
             { name: 'theme-color', content: '#013657' },
             { name: 'og:title', property: 'og:title', content: 'Listification'},
             { name: 'og:description', property: 'og:description', content: 'Listification is a web app that allows you to create list locally, without the need of an internet connection.' },
-            { name: 'og:image' , property: 'og:image', content: '/seo-assets/banner.png' },
+            { name: 'og:image' , property: 'og:image', content: '/web-assets/banner.png' },
             { name: 'og:image:width' , property: 'og:image:width', content: '1200' },
             { name: 'og:image:height' , property: 'og:image:height', content: '630' },
             { name: 'og:image:alt' , property: 'og:image:alt', content: 'Listification' },

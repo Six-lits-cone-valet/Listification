@@ -123,7 +123,7 @@ async function updateElementText() {
                 </div>
 
                 <div class="content grow flex alignCenter" :class="{ 'justifyEnd' : appState.leftHand}">
-                    <p class="maxW100">{{ text }}</p>
+                    <p class="w100">{{ text }}</p>
                 </div>
 
                 <div class="icons">
@@ -279,7 +279,7 @@ async function updateElementText() {
 .content {
     font-size: 18px;
     font-weight: 700;
-    padding-left: 15px;
+    padding: 0 15px;
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;

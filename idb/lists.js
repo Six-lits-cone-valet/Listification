@@ -26,7 +26,7 @@ async function createNewList(name, theme) {
     return request;
 }
 
-async function getLists(limit = 10) {
+async function getLists(limit = 100) {
     const db = await openDB('listify', 1);
     const tx = db.transaction('lists', 'readonly');
     const store = tx.objectStore('lists');

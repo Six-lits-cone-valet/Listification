@@ -26,7 +26,7 @@ const dialogs = {
                 </svg>
             </h1>
 
-            <div class="content">
+            <div class="content w100">
                 <DialogNewList v-if="appState.activeDialog === 'newList'" />
 
                 <DialogMyLists v-if="appState.activeDialog === 'myLists'" />
@@ -44,9 +44,7 @@ const dialogs = {
 
 <style scoped>
 .dialogBox {
-    
     background-color: rgba(0, 29, 38, 0.709);
-    
 }
 .dialog {
     width: min(400px, 96%);
@@ -57,8 +55,8 @@ const dialogs = {
     border-radius: 10px;
     box-shadow: 1px 1px 5px rgb(0, 32, 25);
     box-shadow: 0px 0px 5px rgba(101, 211, 255, 0.115);
+    padding-bottom: 10px;
     overflow: hidden;
-    overflow-y: scroll;
 }
 h1 {
     padding: 10px;
@@ -68,5 +66,7 @@ h1 span {
 }
 .content {
     padding:  10px;
+    max-height: 70vh;
+    overflow-y: scroll;
 }
 </style>

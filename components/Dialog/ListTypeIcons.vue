@@ -39,7 +39,7 @@ const mousemove = (e) => {
     <div class="box w100">
         <p>list theme</p>
 
-        <div class="scroller deepField w100 flex justifyBetween gap10 marTop20" @mousedown="mousedown"
+        <div class="scroller deepField w100 flex justifyBetween gap10 marTop20 r" @mousedown="mousedown"
             @mouseleave="endScroll" @mouseup="endScroll" @mousemove="mousemove">
             <DialogThemeIcon v-for="icon in Object.keys(icons)" :key="icon" :iconId="icon"
                 :active="activeTheme === icon" @click="handleClick(icon)" class="themeIcon" border />

@@ -45,8 +45,8 @@ async function submitForm() {
 </script>
 
 <template>
-    <div class="grow">
-        <form ref="form" class="flex column gap20" @submit.prevent="submitForm">
+    <div class="w100">
+        <form ref="form" class="w100 flex column gap20" @submit.prevent="submitForm">
             <DialogListTypeIcons @selectTheme="setTheme" />
 
             <div class="flex column gap10">

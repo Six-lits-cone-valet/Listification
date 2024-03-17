@@ -50,6 +50,8 @@ onMounted(async () => {
     let listId = await getActiveListId();
     if (listId) {
         appState.value.activeListId = listId;
+    } else {
+        appState.value.activeDialog = 'newList'
     }
 })
 
@@ -93,7 +95,7 @@ onMounted(async () => {
                 </div>
                 <!-- </div> -->
 
-                <ButtonCreateNew @clicked="requestingNewItem = true">
+                <ButtonCreateNew v-if="!requestingNewItem" @clicked="requestingNewItem = true">
                     Create New Item
                 </ButtonCreateNew>
 

@@ -1,4 +1,6 @@
 import { openDB } from 'idb';
+import { setActiveList } from './state';
+import { getItemsBytListId, deleteItem } from './items';
 export { 
         createNewList, 
         getLists, 
@@ -58,7 +60,11 @@ async function deleteListById(id) {
     const store = tx.objectStore('lists');
     const request = await store.delete(id);
     await tx.done;
-    
+
+    await deleteAllItemsByListId(id);
+
+    await setActiveList(undefined);
+
     return request;
 }
 
@@ -70,4 +76,12 @@ async function toggleListIsImportant(listId) {
     list.isImportant = !list.isImportant;
     store.put(list);
     await tx.done;
+}
+
+async function deleteAllItemsByListId(listId) {
+    const items = await getItemsBytListId(listId);
+
+    items.forEach(item => {
+        deleteItem(item.id);
+    });
 }

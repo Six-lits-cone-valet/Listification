@@ -76,7 +76,7 @@ onMounted(async () => {
             <div class="items h100 flex column gap10">
                 <ElementCard v-if="activeListData.items.length" v-for="item in activeListData.items" :key="item.id"
                     :element="item" :text="item.text" store="items" :itemId="item.id" @elementDeleted="loadItems"
-                    @refreshActiveList="loadItems" />
+                    @refresh="loadItems" />
 
                 <!-- <div class="newItemBox w100"> -->
                 <div class="newItemBox relative w100 flex alignCenter" v-if="requestingNewItem">

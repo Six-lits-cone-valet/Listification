@@ -6,7 +6,8 @@ export {
         getLists, 
         getListDataById, 
         deleteListById ,
-        toggleListIsImportant
+        toggleListIsImportant,
+        updateList
     };
 
 async function createNewList(name, theme) {
@@ -84,4 +85,14 @@ async function deleteAllItemsByListId(listId) {
     items.forEach(item => {
         deleteItem(item.id);
     });
+}
+
+async function updateList(listId, index, newValue) {
+    const db = await openDB('listify', 1);
+    const tx = db.transaction('lists', 'readwrite');
+    const store = tx.objectStore('lists');
+    const list = await store.get(listId);
+    list[index] = newValue;
+    store.put(list);
+    await tx.done;
 }

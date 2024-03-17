@@ -6,6 +6,7 @@
 }
 
 :root {
+    --header-height: 36px;
     --dark: #013657;
     --darker: #002135;
     --super-dark: rgb(0, 13, 22);

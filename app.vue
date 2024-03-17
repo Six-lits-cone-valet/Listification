@@ -42,7 +42,7 @@ onMounted(async () => {
 }
 
 main {
-    height: calc(100% - 60px);
+    height: calc(100% - var(--header-height));
     flex-grow: 1;
     background-color: var(--darker);
 }

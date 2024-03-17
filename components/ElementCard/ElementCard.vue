@@ -176,7 +176,9 @@ async function updateElementText() {
                 <div class="h100 validation flex" :class="{ 'rowReverse': appState.leftHand }"
                     v-if="menuOption === 'validation'">
                     <div class="content flex alignCenter grow" :class="{ 'justifyEnd': appState.leftHand }">
-                        <p class="maxW100">action validation</p>
+                        <p class="maxW100">
+                            {{ `Delete this ${ store === 'items' ? 'item' : 'list'} ?` }}
+                        </p>
                     </div>
 
                     <div class="icons flex">
@@ -288,12 +290,12 @@ async function updateElementText() {
 
 .icons {
     height: 46px;
-    padding: 6px;
+    padding: 8px;
     fill: var(--gray-light);
 }
 .menuIcon {
     height: 100%;
-    
+    width: 48px;
     flex-shrink: 0;
 }
 

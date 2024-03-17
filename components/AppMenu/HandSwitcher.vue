@@ -13,7 +13,7 @@ function toggleHandPreference() {
 </script>
 
 <template>
-    <div class="box flex gap10">
+    <div class="box flex justifyEnd gap10">
         <svg name="touch" viewBox="0 -960 960 960" class="touchIcon flipped pointer"
             :class="{ 'active': appState.leftHand }" @click="toggleHandPreference">
             <path
@@ -30,7 +30,9 @@ function toggleHandPreference() {
 
 <style scoped>
 .touchIcon {
-    width: 30px;
+    width: 48px;
+    height: 48px;
+    padding: 8px;
     fill: var(--gray-light);
 }
 .touchIcon.flipped {

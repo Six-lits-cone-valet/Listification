@@ -227,6 +227,7 @@ async function toggleIsImportant() {
 .themeIcon {
     width: 35px;
     padding: 5px;
+    flex-shrink: 0;
 }
 .content {
     font-size: 18px;
@@ -236,6 +237,7 @@ async function toggleIsImportant() {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow-x: scroll;
 }
 .content,
 .icons {

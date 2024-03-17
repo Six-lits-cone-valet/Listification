@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <svg viewBox="0 -960 960 960" class="themeIcon pointer"
+    <svg viewBox="0 -960 960 960" class="icon_large pointer"
     :class="[
         { 'active' : active },
         { 'border' : border }
@@ -23,12 +23,8 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.themeIcon {
-    width: 48px;
-    height: 48px;
-    padding: 6px;
+svg {
     fill: var(--gray-light);
-    
     border-radius: 5px;
 }
 

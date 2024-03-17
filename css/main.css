@@ -65,10 +65,22 @@ body {
     fill: var(--gray-light);
 }
 
-
-
-
-
+/* Icons */
+.icon_large {
+    width: 48px;
+    height: 48px;
+    padding: 8px;
+}
+.icon_medium {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+.icon_small {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+}
 /* 
 special styles
 */

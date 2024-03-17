@@ -109,12 +109,12 @@ async function updateElementText() {
                 </svg> -->
 
                 <div class="icons">
-                    <svg viewBox="0 -960 960 960" class="menuIcon"
+                    <svg viewBox="0 -960 960 960" class="cardIcon"
                         :class="[element.isImportant ? 'fill_important' : 'fill_gray-light']" v-if="store === 'lists'">
                         <path :d="icons[element.theme].path" />
                     </svg>
 
-                    <svg name="imortant" viewBox="0 -960 960 960" class="menuIcon delete pointer"
+                    <svg name="imortant" viewBox="0 -960 960 960" class="cardIcon"
                         :class="[element.isImportant ? 'fill_important' : 'fill_gray-light']"
                         v-if="store === 'items' && element.isImportant">
                         <path
@@ -128,7 +128,7 @@ async function updateElementText() {
 
                 <div class="icons">
                     <svg name="menu" viewBox="0 -960 960 960" @click.stop="drawerPosition = 'menuVisible'"
-                        class="menuIcon pointer">
+                        class="cardIcon pointer">
                         <path
                             d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z" />
                     </svg>
@@ -140,7 +140,7 @@ async function updateElementText() {
                     <div class="icons">
                         <!-- edit text -->
                         <svg name="edit" viewBox="0 -960 960 960" @click.stop="requestEditItem"
-                            class="menuIcon edit pointer">
+                            class="cardIcon edit pointer">
                             <path
                                 d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
                         </svg>
@@ -148,14 +148,14 @@ async function updateElementText() {
                         <!-- delete item -->
                         <svg name="delete" viewBox="0 -960 960 960"
                             @click.stop="menuOption = 'validation', drawerPosition = 'menuOptions'"
-                            class="menuIcon delete pointer">
+                            class="cardIcon pointer">
                             <path
                                 d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
                         </svg>
 
                         <!-- mark as important -->
                         <svg name="imortant" viewBox="0 -960 960 960" @click.stop="toggleIsImportant"
-                            class="menuIcon delete pointer" :class="{ 'fill_important' : element.isImportant}">
+                            class="cardIcon pointer" :class="{ 'fill_important' : element.isImportant}">
                             <path
                                 d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z" />
                         </svg>
@@ -164,7 +164,7 @@ async function updateElementText() {
                 <!-- cancel -->
                 <div class="icons">
                     <svg name="close" viewBox="0 -960 960 960" @click.stop="drawerPosition='textVisible'"
-                        class=" pointer menuIcon">
+                        class=" pointer cardIcon">
                         <path
                             d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                     </svg>
@@ -184,12 +184,12 @@ async function updateElementText() {
                     <div class="icons flex">
                         <!-- confirm delete item-->
                         <svg name="check" viewBox="0 -960 960 960" @click.stop="requestDeleteItem"
-                            class="pointer menuIcon">
+                            class="pointer cardIcon">
                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                         </svg>
                         <!-- cancel delete item-->
                         <svg name="close" viewBox="0 -960 960 960" @click.stop="drawerPosition = 'menuVisible'"
-                            class="pointer menuIcon">
+                            class="pointer cardIcon">
                             <path
                                 d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                         </svg>
@@ -203,12 +203,12 @@ async function updateElementText() {
                     </div>
 
                     <div class="icons">
-                        <svg name="check" viewBox="0 -960 960 960" class="pointer menuIcon" @click="updateElementText">
+                        <svg name="check" viewBox="0 -960 960 960" class="pointer cardIcon" @click="updateElementText">
                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                         </svg>
 
                         <svg name="close" viewBox="0 -960 960 960" @click.stop="drawerPosition = 'menuVisible'"
-                            class="pointer menuIcon">
+                            class="pointer cardIcon">
                             <path
                                 d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                         </svg>
@@ -228,7 +228,7 @@ async function updateElementText() {
 
     height: var(--bigBox-height);
     width: 100%;
-    border: 1px solid var(--gray-light);
+    border: 1px solid rgba(163, 224, 255, 0.497);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -261,7 +261,6 @@ async function updateElementText() {
 }
 .box.text {
     background-color: var(--dark);
-    padding-left: 10px;
 }
 .box.menu {
     background-color: var(--dark);
@@ -280,22 +279,21 @@ async function updateElementText() {
 .content {
     font-size: 18px;
     font-weight: 700;
-    margin: 0 10px;
+    padding-left: 15px;
     flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow-x: scroll;
 }
-
 .icons {
-    height: 46px;
-    padding: 8px;
-    fill: var(--gray-light);
+    height: 100%;
 }
-.menuIcon {
+.cardIcon {
     height: 100%;
     width: 48px;
+    padding: 8px;
+    fill: var(--gray-light);
     flex-shrink: 0;
 }
 

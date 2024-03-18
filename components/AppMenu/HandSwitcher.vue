@@ -15,7 +15,9 @@ async function toggleLeftHand(state) {
     appState.value.isPending = false;
 }
 onMounted(async () => {
-    appState.value.leftHand = await getLeftHand();
+    if(appState.value.dbExists) {
+        appState.value.leftHand = await getLeftHand();
+    }
     console.log(appState.value.leftHand);
 });
 </script>

@@ -32,7 +32,7 @@ onMounted(async () => {
             store="lists" />
 
         <ButtonCreateNew @clicked="appState.activeDialog = 'newList'">
-            Create New List
+            Nouvelle liste
         </ButtonCreateNew>
     </div>
 </template>

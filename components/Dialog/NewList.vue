@@ -50,12 +50,12 @@ async function submitForm() {
             <DialogListTypeIcons @selectTheme="setTheme" />
 
             <div class="flex column gap10">
-                <input class="deepField" id="newList" type="text" placeholder="List Name" v-model="newListTitle"
+                <input class="deepField" id="newList" type="text" placeholder="Nom de la liste" v-model="newListTitle"
                     autocomplete="off" />
             </div>
 
             <div class="flex handPreference" :class="{ 'justifyEnd' : !appState.leftHand}">
-                <button class="pointer centered" type="submit">Create</button>
+                <button class="pointer centered" type="submit">Créer</button>
             </div>
         </form>
     </div>

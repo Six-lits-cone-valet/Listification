@@ -4,10 +4,10 @@ const appState = useAppState();
 
 const dialogs = {
     newList: {
-        title: 'Create New List'
+        title: 'Nouvelle liste'
     },
     myLists: {
-        title: 'My Lists'
+        title: 'Mes listes'
     }
 }
 

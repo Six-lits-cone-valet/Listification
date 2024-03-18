@@ -37,7 +37,7 @@ const mousemove = (e) => {
 
 <template>
     <div class="box w100">
-        <p>list theme</p>
+        <p>Thème de la liste</p>
 
         <div class="scroller deepField w100 flex justifyBetween gap10 marTop20" @mousedown="mousedown"
             @mouseleave="endScroll" @mouseup="endScroll" @mousemove="mousemove">

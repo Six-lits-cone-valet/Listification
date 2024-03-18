@@ -92,7 +92,7 @@ onMounted(async () => {
                 </div>
 
                 <ButtonCreateNew v-if="!requestingNewItem" @clicked="requestingNewItem = true">
-                    Create New Item
+                    Ajouter un élément
                 </ButtonCreateNew>
 
             </div>

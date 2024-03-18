@@ -1,6 +1,4 @@
 <script setup>
-
-
 import browserSupport from '@/idb/browserSupport';
 const browserIsCompatible = ref(null);
 
@@ -28,9 +26,9 @@ onMounted(async () => {
 
         <Bouzeux v-else />
 
-        <AppMenuOverlay />
+        <AppMenuOverlay v-if="browserIsCompatible"  />
 
-        <ToasterOverLay />
+        <ToasterOverLay v-if="browserIsCompatible"  />
     </div>
 </template>
 

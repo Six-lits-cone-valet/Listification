@@ -9,20 +9,28 @@ function requestMyLists() {
     appState.value.activeDialog = 'myLists';
     menuIsOpen.value = false;
 }
+
+function toggleMenu() {
+    menuIsOpen.value = !menuIsOpen.value;
+    window.addEventListener('click', windowClick, true);
+}
+function windowClick(e) {
+    if (e.target.closest('.drawer')) return;
+    menuIsOpen.value = false;
+    window.removeEventListener('click', windowClick, true);
+}
 </script>
+
 <template>
     <div class="box absolute w100 bottom0 left0 noEvents flex" :class="{ 'justifyEnd' : !appState.leftHand}">
-        <button class="centered allEvents pointer shadow">
+        <button class="centered allEvents pointer shadow" @click.stop="toggleMenu">
             <svg name="menu" class="icon_medium fill_gray-light meatBalls" viewBox="0 -960 960 960"
-                @click.prevent.stop="menuIsOpen = true" v-if="!menuIsOpen">
-                <path
-                    d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z" />
+                v-if="!menuIsOpen">
+                <path d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z" />
             </svg>
 
-            <svg name="close" class="icon_medium fill_gray-light" viewBox="0 -960 960 960"
-                @click.stop="menuIsOpen = false" v-else>
-                <path
-                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            <svg name="close" class="icon_medium fill_gray-light" viewBox="0 -960 960 960" v-else>
+                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
             </svg>
         </button>
 
@@ -31,7 +39,7 @@ function requestMyLists() {
             <div class="menuBox flex column gap10 allEvents shadow" :class="[{ 'alignEnd': !appState.leftHand }]">
                 <AppMenuHandSwitcher />
 
-                <div class="flex">
+                <div class="flex gap10">
                     <svg id="myLists" class="icon_large fill_gray-light inside pointer" @click="requestMyLists"
                         viewBox="0 -960 960 960">
                         <path

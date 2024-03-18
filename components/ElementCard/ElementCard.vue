@@ -101,13 +101,7 @@ async function updateElementText() {
     <div class="bigBox w100" :class="{ 'isImportant': element.isImportant}">
         <div class="drawer " :class="drawerPosition">
             <!-- Text box -->
-            <div class="box text flex" :class="{ 'rowReverse' : appState.leftHand}">
-                <!-- <svg name="imortant" v-if="element.isImportant" viewBox="0 -960 960 960" @click.stop="toggleIsImportant"
-                    class="icon fill_important">
-                    <path
-                        d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z" />
-                </svg> -->
-
+            <div class="box text" :class="{ 'rowReverse' : appState.leftHand}">
                 <div class="icons">
                     <svg viewBox="0 -960 960 960" class="cardIcon"
                         :class="[element.isImportant ? 'fill_important' : 'fill_gray-light']" v-if="store === 'lists'">
@@ -115,8 +109,7 @@ async function updateElementText() {
                     </svg>
 
                     <svg name="imortant" viewBox="0 -960 960 960" class="cardIcon"
-                        :class="[element.isImportant ? 'fill_important' : 'fill_gray-light']"
-                        v-if="store === 'items' && element.isImportant">
+                        :class="{ 'active' : element.isImportant }" v-if="store === 'items' && element.isImportant">
                         <path
                             d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z" />
                     </svg>
@@ -135,7 +128,7 @@ async function updateElementText() {
                 </div>
             </div>
             <!-- Menu box -->
-            <div class="box menu flex" :class="{ 'rowReverse' : appState.leftHand}">
+            <div class="box menu" :class="{ 'rowReverse' : appState.leftHand}">
                 <div class="content flex alignCenter grow" :class="{ 'justifyEnd': appState.leftHand }">
                     <div class="icons">
                         <!-- edit text -->
@@ -173,7 +166,7 @@ async function updateElementText() {
             <!-- Menu Options box -->
             <div class="box options w100">
                 <!-- confirmation box -->
-                <div class="h100 validation flex" :class="{ 'rowReverse': appState.leftHand }"
+                <div class="h100 w100 validation flex" :class="{ 'rowReverse': appState.leftHand }"
                     v-if="menuOption === 'validation'">
                     <div class="content flex alignCenter grow" :class="{ 'justifyEnd': appState.leftHand }">
                         <p class="maxW100">
@@ -196,7 +189,7 @@ async function updateElementText() {
                     </div>
                 </div>
                 <!-- edition box -->
-                <div class="h100 edition flex" :class="{ 'rowReverse': appState.leftHand }"
+                <div class="h100 w100 edition flex" :class="{ 'rowReverse': appState.leftHand }"
                     v-if="menuOption === 'edition'" @click.stop>
                     <div class="content flex alignCenter grow" :class="{ 'justifyEnd': appState.leftHand }">
                         <input type="text" v-model="editItemText" v-focus>
@@ -221,12 +214,10 @@ async function updateElementText() {
 
 <style scoped>
 .bigBox {
-    --bigBox-height: 48px;
-    --box-height: 46px;
-
+    --box-height: 48px;
     flex-shrink: 0;
 
-    height: var(--bigBox-height);
+    height: 48px;
     width: 100%;
     border: 1px solid rgba(163, 224, 255, 0.497);
     border-radius: 10px;
@@ -253,11 +244,9 @@ async function updateElementText() {
 .drawer.menuOptions {
     transform: translateY(calc(var(--box-height) * -2));
 }
-.box.text,
-.box.menu,
-.box.options {
+.box {
     flex-shrink: 0;
-    height: var(--box-height);
+    display: flex;
 }
 .box.text {
     background-color: var(--dark);
@@ -287,7 +276,10 @@ async function updateElementText() {
     overflow-x: scroll;
 }
 .icons {
-    height: 100%;
+    height: 48px;
+}
+.icon.active {
+    fill: var(--important);
 }
 .cardIcon {
     height: 100%;
@@ -296,5 +288,7 @@ async function updateElementText() {
     fill: var(--gray-light);
     flex-shrink: 0;
 }
-
+.cardIcon.active {
+    fill: var(--important);
+}
 </style>

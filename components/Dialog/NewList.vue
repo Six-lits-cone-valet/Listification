@@ -62,11 +62,11 @@ async function submitForm() {
 </template>
 
 <style scoped>
-input[type="text"] {
+input {
     height: 48px;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0 10px;
     background-color: transparent;
 }
 button {

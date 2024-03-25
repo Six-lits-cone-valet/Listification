@@ -11,19 +11,19 @@ import {
     updateItem
 } from '@/idb/items';
 
-const drawerPosition = ref('textVisible');
-const menuOption = ref('');
-
 const appState = useAppState();
 
 const props = defineProps({
     element: Object,
     text: String,
-    store : String,
+    store: String,
     itemId: String
 });
 
 const emit = defineEmits(['elementDeleted', 'refreshActiveList', 'refresh']);
+
+const drawerPosition = ref('textVisible');
+const menuOption = ref('');
 
 async function requestDeleteItem() {
     if (appState.value.isPending) return;
@@ -53,6 +53,7 @@ async function requestDeleteItem() {
     
     appState.value.isPending = false;
 }
+
 async function toggleIsImportant() {
     if (appState.value.isPending) return;
 
@@ -212,7 +213,8 @@ async function updateElementText() {
 <style scoped>
 .bigBox {
     --box-height: 48px;
-    /* flex-shrink: 0; */
+    
+    flex-shrink: 0;
 
     width: calc(100% - 2px);
     height: 48px;
@@ -261,7 +263,7 @@ async function updateElementText() {
     align-items: center;
 }
 .content {
-    padding-left: 10px;
+    padding: 0 10px;
     font-weight: 600;
 }
 .contentIcon {

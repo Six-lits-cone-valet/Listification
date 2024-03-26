@@ -11,6 +11,16 @@ const activeListData = ref(null);
 const requestingNewItem = ref(false);
 const newItemText = ref('');
 
+async function requestEditItem() {
+    requestingNewItem.value = true;
+
+    document.addEventListener('keydown', (e) => {
+        console.log(e.key);
+        if (e.key === 'Enter') {
+            saveNewItem();
+        }
+    })
+}
 
 async function saveNewItem() {
     if ( appState.value.isPending ||
@@ -91,7 +101,7 @@ onMounted(async () => {
                     </div>
                 </div>
 
-                <ButtonCreateNew v-if="!requestingNewItem" @clicked="requestingNewItem = true">
+                <ButtonCreateNew v-if="!requestingNewItem" @clicked="requestEditItem">
                     Ajouter un élément
                 </ButtonCreateNew>
 
@@ -102,8 +112,8 @@ onMounted(async () => {
 
 <style scoped>
 header {
-    height: 60px;
     flex-shrink: 0;
+    height: 60px;
 }
 .themeIcon {
     width: 30px;
@@ -135,6 +145,8 @@ main {
     height: calc(100% - 60px);
 }
 .items {
+    padding-top: 20px;
+    padding-bottom: 100px;
     overflow: scroll;
 }
 </style>

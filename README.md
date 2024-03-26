@@ -15,12 +15,13 @@ Si vous avez envie de contribuer au projet, n'hésitez pas à choisir ou ouvrir 
 modifications et améliorations à apporter et des issues seront créées régulièrement en espérant que des personnes se joignent à moi dans ce petit projet.
 
 ## Pour contribuer:
-
-1- forkez ce repo
-2- créer une copie locale de votre fork.
-3- choisir une issue (ou en créer une) et créer une branche locale pour commencer à travailler
-4- Push les modification sur une branche du même nom sur votre fork
-5- Ouvrir une pull request pour proposer les changements
+<ol>
+    <li>forkez ce repo</li>
+    <li>créer une copie locale de votre fork.</li>
+    <li>choisir une issue (ou en créer une) et créer une branche locale pour commencer à travailler</li>
+    <li>Push les modification sur une branche du même nom sur votre fork</li>
+    <li>Ouvrir une pull request pour proposer les changements</li>
+</ol>
 
 ## Contact
 Vous pouvez me contacter sur 

@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     manifest: false,
     injectRegister: 'auto',
     workbox: {
-        registerType: 'autoUpdate',
         navigateFallback: '/',
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
     },

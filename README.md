@@ -26,8 +26,10 @@ modifications et améliorations à apporter et des issues seront créées régul
 ## Contact
 Vous pouvez me contacter sur 
 
-linkedin: https://www.linkedin.com/in/eric-podhorecki-8946aa1ba/
-
+<ul>
+    <li><a href="https://www.linkedin.com/in/eric-podhorecki-8946aa1ba/">Linkedin</a></li>
+    <li><a href="https://discord.com/channels/1222094066284499034/1222094595182034986">Le serveur Discord de Six Lits Cône Valet </a></li>
+</ul>
 
 # Nuxt 3 Minimal Starter
 

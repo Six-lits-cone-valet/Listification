@@ -1,9 +1,15 @@
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-  css: [
-    '~/css/main.css',
-    '~/css/utility.css'
-  ],
+    buildModules: [
+        'nuxt-vite'
+    ],
+    modules: [
+        '@vite-pwa/nuxt'
+    ],
+    devtools: { enabled: false },
+    css: [
+        '~/css/main.css',
+        '~/css/utility.css'
+    ],
 app: {
     head: {
         charset: 'utf-8', // default

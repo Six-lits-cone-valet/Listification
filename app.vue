@@ -11,6 +11,8 @@ onMounted(async () => {
 </script>
 
 <template>
+    <VitePwaManifest />
+    
     <div class="appBox relative overflowHidden">
         <HeaderMain />
 

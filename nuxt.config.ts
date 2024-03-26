@@ -1,5 +1,21 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  modules: [
+    "@vite-pwa/nuxt",
+  ],
+  pwa: {
+    manifest: false,
+    injectRegister: 'auto',
+    workbox: {
+        registerType: 'autoUpdate',
+        navigateFallback: '/',
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+    },
+    devOptions: {
+        enable: true,
+        type: 'module',
+    }
+  },
   css: [
     '~/css/main.css',
     '~/css/utility.css'
@@ -17,7 +33,7 @@ app: {
             { rel: 'apple-touch-icon', sizes: '180x180', href: '/web-assets/apple-touch-icon.png' },
             { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/web-assets/favicon-32x32.png' },
             { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/web-assets/favicon-16x16.png' },
-            { rel: 'manifest', href: '/web-assets/site.webmanifest' },
+            { rel: 'manifest', href: '/web-assets/manifest' },
             { rel: 'mask-icon', href: '/web-assets/safari-pinned-tab.svg', color: '#5bbad5' },
             { rel: 'shortcut icon', href: '/web-assets/favicon.ico' }
         ],

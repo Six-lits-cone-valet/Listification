@@ -23,7 +23,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="box flex justifyEnd gap10">
+    <div class="box flex gap10">
         <svg name="touch" viewBox="0 -960 960 960" class="icon_large touchIcon flipped pointer"
             :class="{ 'active': appState.leftHand }" @click="toggleLeftHand(true)">
             <path

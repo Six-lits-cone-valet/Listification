@@ -62,3 +62,12 @@ special styles
 .shadow {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.242);
 }
+
+/* use thin scroll bar */
+
+* {
+    scrollbar-width: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}

@@ -17,7 +17,8 @@ async function createNewItem(listId, itemText) {
         list_id: listId,
         date_created: Date.now(),
         date_updated: Date.now(),
-        isImportant: false
+        isImportant: false,
+        isChecked: false
     };
     const request = store.add(newItem);
     await tx.done;

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, isRef } from 'vue';
+import { ref, onMounted, onUnmounted, isRef } from 'vue';
 
 
 import HeaderMain from '@/components/Header/HeaderMain.vue';
@@ -19,10 +19,32 @@ const { dbExists, activeDialog } = storeToRefs(state);
 
 const browserIsCompatible = ref(null);
 
+let keydownHandler;
+
+function togglePosorokoDevTools() {
+    const html = document.querySelector('html');
+
+    if (html.classList.contains('posorokoDevTools')) {
+        html.classList.remove('posorokoDevTools');
+        return;
+    }
+
+    html.classList.toggle('posorokoDevTools');
+}
 onMounted(async () => {
     browserIsCompatible.value = browserSupport();
-});
 
+    keydownHandler = function (event) {
+        if (event.ctrlKey && event.altKey && event.key === 'p') {
+            console.log('Ctrl+Alt+P was pressed');
+            togglePosorokoDevTools();
+        }
+    };
+    window.addEventListener('keydown', keydownHandler);
+});
+onUnmounted(() => {
+    window.removeEventListener('keydown', keydownHandler);
+});
 </script>
 
 <template>

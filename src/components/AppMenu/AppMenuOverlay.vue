@@ -6,7 +6,7 @@ import AppMenuHandSwitcher from '@/components/AppMenu/HandSwitcher.vue';
 import { storeToRefs } from 'pinia';
 import { useAppState } from '@/stores/appState';
 const state = useAppState();
-const { activeDialog, leftHand} = storeToRefs(state);
+const { activeDialog, leftHand, keyboardOpen } = storeToRefs(state);
 
 const menuIsOpen = ref(false);
 function requestNewList() {
@@ -37,7 +37,7 @@ function windowClick(e) {
 
 <template>
     <div class="box absolute w100 bottom0 left0 noEvents flex" :class="{ 'justifyEnd' : !leftHand}">
-        <button class="centered allEvents pointer shadow">
+        <button class="centered allEvents pointer shadow" v-if="!keyboardOpen">
             <svg name="menu" class="icon_medium fill_gray-light meatBalls" viewBox="0 -960 960 960" v-if="!menuIsOpen"
                 @click="openMenu">
                 <path d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z" />

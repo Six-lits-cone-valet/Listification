@@ -10,7 +10,7 @@
     --gray-darker: rgb(120, 120, 120);
 
     --danger: rgb(121, 58, 30);
-    --success: rgb(14, 164, 44);
+    --success: rgb(61, 160, 81);
     --important: rgb(231, 172, 25);
     --warning: rgb(112, 0, 146);
 }
@@ -56,3 +56,4 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+

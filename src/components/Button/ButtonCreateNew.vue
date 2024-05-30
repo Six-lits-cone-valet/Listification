@@ -27,7 +27,6 @@ button {
     padding: 6px 8px 6px 15px;
     border: 1px solid var(--gray-light);
     border-radius: 100px;
-    margin: 3px 3px 0 0;
 }
 
 button span {

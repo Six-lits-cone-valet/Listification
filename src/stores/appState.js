@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 
 export const useAppState = defineStore('appState', {
     state: () => ({ 
+        keyboardOpen: false, // on screen keyboard on mobile
         activeDialog: '',
         activeListId: '',
         myLists: [],

@@ -1,5 +1,9 @@
+<!-- 
+    "element" refers to either an item (in a list) or a list.  both use this component to be displayed on screen.
+ -->
+
 <script setup>
-import { defineProps, defineEmits, ref } from 'vue';
+import { defineProps, defineEmits, ref, watch, watchEffect } from 'vue';
 
 import icons from '@/assets/icons.json';
 import {
@@ -20,7 +24,7 @@ import {
 import { storeToRefs } from 'pinia';
 import { useAppState } from '@/stores/appState';
 const state = useAppState();
-const { isPending, message, activeListId } = storeToRefs(state);
+const { isPending, message, activeListId, keyboardOpen } = storeToRefs(state);
 
 const props = defineProps({
     element: Object,
@@ -73,8 +77,7 @@ async function toggleIsImportant() {
     } else if (props.store === 'lists') {
         await toggleListIsImportant(props.itemId);
     }
-    // emit('refreshActiveList');
-    // props.element.isImportant = !props.element.isImportant;
+    emit('refresh');
     drawerPosition.value = 'textVisible';
     isPending.value = false;
 }
@@ -124,6 +127,15 @@ async function requestCheckItem() {
         drawerPosition.value = 'textVisible';
     })    
 }
+function cancelEdition() {
+    menuOption.value = '';
+    drawerPosition.value = 'menuVisible';
+}
+watch( menuOption, () => {
+    keyboardOpen.value = menuOption.value === 'edition' ? true : false;
+    console.log(keyboardOpen.value);
+})
+
 </script>
 
 <template>
@@ -205,7 +217,7 @@ async function requestCheckItem() {
             <!-- Menu Options box -->
             <div class="box options w100">
                 <!-- confirmation box -->
-                <div class="full validation flex" :class="{ 'rowReverse': leftHand }"
+                <div class="full validation warning flex" :class="{ 'rowReverse': leftHand }"
                     v-if="menuOption === 'validation'">
                     <div class="content" :class="{ 'justifyEnd': leftHand }">
                         <p class="textContent extraPadding">
@@ -240,7 +252,7 @@ async function requestCheckItem() {
                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
                         </svg>
 
-                        <svg name="close" viewBox="0 -960 960 960" @click.stop="drawerPosition = 'menuVisible'"
+                        <svg name="close" viewBox="0 -960 960 960" @click.stop="cancelEdition"
                             class="pointer icon_large">
                             <path
                                 d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
@@ -293,6 +305,9 @@ async function requestCheckItem() {
 
 .box .edition {
     background-color: var(--success);
+}
+.box .warning {
+    background-color: var(--danger);
 }
 .content,
 .icons {
